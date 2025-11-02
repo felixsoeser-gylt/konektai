@@ -210,8 +210,11 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
                     </div>
                     <div className="h-2 bg-white/10 rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-gradient-to-r from-violet-500 to-purple-500 rounded-full transition-all duration-1000"
-                        style={{ width: `${lead.score}%` }}
+                        className="h-full rounded-full transition-all duration-1000"
+                        style={{
+                          width: `${lead.score}%`,
+                          background: "linear-gradient(to right, rgb(139, 92, 246), rgb(168, 85, 247))",
+                        }}
                       />
                     </div>
                   </div>
