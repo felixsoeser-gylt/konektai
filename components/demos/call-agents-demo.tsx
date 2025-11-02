@@ -80,7 +80,7 @@ export function CallAgentsDemo({ isActive }: { isActive?: boolean }) {
   }
 
   return (
-    <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+    <div className="backdrop-blur-md bg-black/20 border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden">
       {/* Glow effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-transparent to-purple-500/10 pointer-events-none" />
 
@@ -105,7 +105,7 @@ export function CallAgentsDemo({ isActive }: { isActive?: boolean }) {
             {/* 3D Agent Avatar */}
             <div className="relative w-full max-w-sm aspect-square">
               <div className="absolute inset-0 bg-gradient-to-br from-violet-500/20 to-purple-500/20 rounded-full blur-3xl" />
-              <div className="relative w-full h-full rounded-full bg-gradient-to-br from-white/10 to-white/5 border border-white/20 backdrop-blur-xl flex items-center justify-center overflow-hidden">
+              <div className="relative w-full h-full rounded-full bg-gradient-to-br from-white/15 to-white/10 border border-white/20 backdrop-blur-xl flex items-center justify-center overflow-hidden">
                 {/* Agent silhouette with headset */}
                 <div className="relative">
                   <div className="w-32 h-32 rounded-full bg-gradient-to-br from-violet-400/30 to-purple-400/30 border-2 border-white/30 flex items-center justify-center">
@@ -127,7 +127,7 @@ export function CallAgentsDemo({ isActive }: { isActive?: boolean }) {
 
             {/* Waveform Visualization */}
             <div className="w-full max-w-sm">
-              <div className="flex items-end justify-center gap-1 h-24 bg-white/5 rounded-2xl border border-white/10 p-4">
+              <div className="flex items-end justify-center gap-1 h-24 bg-white/10 rounded-2xl border border-white/10 p-4">
                 {waveformHeights.map((height, i) => (
                   <div
                     key={i}
@@ -164,8 +164,8 @@ export function CallAgentsDemo({ isActive }: { isActive?: boolean }) {
                     key={i}
                     className={`p-4 rounded-2xl backdrop-blur-sm border transition-all duration-500 animate-in slide-in-from-bottom-4 ${
                       line.speaker === "AI Agent"
-                        ? "bg-violet-500/10 border-violet-500/30 text-white ml-4"
-                        : "bg-white/5 border-white/10 text-white mr-4"
+                        ? "bg-violet-500/20 border-violet-500/30 text-white ml-4"
+                        : "bg-white/10 border-white/10 text-white mr-4"
                     }`}
                   >
                     <div className="text-xs font-medium mb-2 text-white/90">{line.speaker}</div>

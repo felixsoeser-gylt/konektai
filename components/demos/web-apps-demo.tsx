@@ -100,7 +100,7 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
   const fgOffset = getParallaxOffset(0.9)
 
   return (
-    <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+    <div className="backdrop-blur-md bg-black/20 border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden">
       {/* Glow effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-transparent to-purple-500/10 pointer-events-none" />
 
@@ -127,15 +127,15 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
                 key={i}
                 className={`flex items-center gap-4 p-5 rounded-2xl backdrop-blur-sm border transition-all duration-500 ${
                   isBuilding && i <= activeStep
-                    ? "bg-violet-500/10 border-violet-500/30 scale-100"
-                    : "bg-white/5 border-white/10 scale-95 opacity-50"
+                    ? "bg-violet-500/20 border-violet-500/30 scale-100"
+                    : "bg-white/10 border-white/10 scale-95 opacity-50"
                 }`}
               >
                 <div
                   className={`flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center text-2xl transition-all duration-500 ${
                     isBuilding && i <= activeStep
                       ? "bg-gradient-to-br from-violet-500/30 to-purple-500/30 border-2 border-violet-500/50 shadow-lg shadow-violet-500/30"
-                      : "bg-white/5 border border-white/10"
+                      : "bg-white/10 border border-white/10"
                   }`}
                 >
                   {step.icon}
@@ -309,7 +309,7 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
                           ].map((feature, i) => (
                             <div
                               key={i}
-                              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3 hover:bg-white/10 hover:border-amber-500/30 transition-all duration-1000 group"
+                              className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-3 hover:bg-white/15 hover:border-amber-500/30 transition-all duration-1000 group"
                             >
                               <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">
                                 {feature.icon}
@@ -325,7 +325,7 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
                           ].map((feature, i) => (
                             <div
                               key={i}
-                              className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-3 hover:bg-white/10 hover:border-violet-500/30 transition-all duration-1000 group"
+                              className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-3 hover:bg-white/15 hover:border-violet-500/30 transition-all duration-1000 group"
                             >
                               <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">
                                 {feature.icon}

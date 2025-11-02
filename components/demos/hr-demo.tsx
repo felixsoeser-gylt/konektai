@@ -82,7 +82,7 @@ export function HRDemo({ isActive }: { isActive?: boolean }) {
   }
 
   return (
-    <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+    <div className="backdrop-blur-md bg-black/20 border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden">
       {/* Glow effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-transparent to-purple-500/10 pointer-events-none" />
 
@@ -113,8 +113,8 @@ export function HRDemo({ isActive }: { isActive?: boolean }) {
                   onClick={() => setSelectedCandidate(i)}
                   className={`p-5 rounded-2xl backdrop-blur-sm border transition-all duration-300 cursor-pointer ${
                     selectedCandidate === i
-                      ? "bg-violet-500/10 border-violet-500/30 scale-[1.02]"
-                      : "bg-white/5 border-white/10 hover:bg-white/8 hover:border-white/20"
+                      ? "bg-violet-500/20 border-violet-500/30 scale-[1.02]"
+                      : "bg-white/10 border-white/10 hover:bg-white/15 hover:border-white/20"
                   }`}
                 >
                   <div className="flex items-start justify-between mb-4">
@@ -129,7 +129,7 @@ export function HRDemo({ isActive }: { isActive?: boolean }) {
                   </div>
 
                   {/* Score Bar */}
-                  <div className="mb-4 h-2 bg-white/5 rounded-full overflow-hidden">
+                  <div className="mb-4 h-2 bg-white/10 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-gradient-to-r from-violet-500 to-purple-500 rounded-full transition-all duration-1000"
                       style={{ width: `${candidate.score}%` }}
@@ -141,7 +141,7 @@ export function HRDemo({ isActive }: { isActive?: boolean }) {
                     {candidate.skills.map((skill, j) => (
                       <span
                         key={j}
-                        className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs text-white font-light"
+                        className="px-3 py-1 rounded-full bg-white/10 border border-white/10 text-xs text-white font-light"
                       >
                         {skill}
                       </span>
@@ -177,15 +177,15 @@ export function HRDemo({ isActive }: { isActive?: boolean }) {
               {currentStages.map((stage, i) => (
                 <div
                   key={i}
-                  className="p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm transition-all duration-500"
+                  className="p-5 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-sm transition-all duration-500"
                 >
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
                       <div
                         className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-light transition-all duration-500 ${
                           isAnimating && stage.count > 0
-                            ? "bg-gradient-to-br from-violet-500/30 to-purple-500/30 border-2 border-violet-500/50 text-gray-900 shadow-lg shadow-violet-500/30"
-                            : "bg-white/5 border border-white/10 text-gray-700"
+                            ? "bg-gradient-to-br from-violet-500/30 to-purple-500/30 border-2 border-violet-500/50 text-white shadow-lg shadow-violet-500/30"
+                            : "bg-white/10 border border-white/10 text-white/70"
                         }`}
                       >
                         {i + 1}
@@ -196,7 +196,7 @@ export function HRDemo({ isActive }: { isActive?: boolean }) {
                   </div>
 
                   {/* Progress Bar */}
-                  <div className="h-2 bg-white/5 rounded-full overflow-hidden">
+                  <div className="h-2 bg-white/10 rounded-full overflow-hidden">
                     <div
                       className="h-full bg-gradient-to-r from-violet-500 to-purple-500 rounded-full transition-all duration-1000"
                       style={{ width: `${(stage.count / stage.target) * 100}%` }}
@@ -220,11 +220,11 @@ export function HRDemo({ isActive }: { isActive?: boolean }) {
 
             {/* Stats */}
             <div className="grid grid-cols-2 gap-3 pt-4">
-              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm text-center">
+              <div className="p-4 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-sm text-center">
                 <div className="text-2xl font-light text-violet-400 mb-1">78%</div>
                 <div className="text-xs text-white/60">Erfolgsquote</div>
               </div>
-              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm text-center">
+              <div className="p-4 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-sm text-center">
                 <div className="text-2xl font-light text-violet-400 mb-1">12 Tage</div>
                 <div className="text-xs text-white/60">Ø Time-to-Hire</div>
               </div>

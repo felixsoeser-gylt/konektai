@@ -72,7 +72,7 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
   }
 
   return (
-    <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+    <div className="backdrop-blur-md bg-black/20 border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden">
       {/* Glow effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-transparent to-purple-500/10 pointer-events-none" />
 
@@ -159,8 +159,8 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
                   key={i}
                   className={`p-5 rounded-2xl backdrop-blur-sm border transition-all duration-500 ${
                     isAnimating && i === activeLeadIndex
-                      ? "bg-violet-500/10 border-violet-500/30 scale-[1.02] shadow-lg shadow-violet-500/20"
-                      : "bg-white/5 border-white/10"
+                      ? "bg-violet-500/20 border-violet-500/30 scale-[1.02] shadow-lg shadow-violet-500/20"
+                      : "bg-white/10 border-white/10"
                   }`}
                 >
                   <div className="flex items-start justify-between mb-3">
@@ -186,7 +186,7 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
                       <span className="text-white/70">Lead Score</span>
                       <span className="text-violet-400 font-light">{lead.score}%</span>
                     </div>
-                    <div className="h-2 bg-white/5 rounded-full overflow-hidden">
+                    <div className="h-2 bg-white/10 rounded-full overflow-hidden">
                       <div
                         className="h-full bg-gradient-to-r from-violet-500 to-purple-500 rounded-full transition-all duration-1000"
                         style={{ width: `${lead.score}%` }}
@@ -204,7 +204,10 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
                 { label: "Avg. Deal", value: "€83k" },
                 { label: "Pipeline", value: "€2.8M" },
               ].map((stat, i) => (
-                <div key={i} className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm text-center">
+                <div
+                  key={i}
+                  className="p-4 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-sm text-center"
+                >
                   <div className="text-lg font-light text-violet-400 mb-1">{stat.value}</div>
                   <div className="text-xs text-white/70">{stat.label}</div>
                 </div>
