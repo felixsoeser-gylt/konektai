@@ -75,7 +75,9 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
         {/* Header */}
         <div className="text-center mb-12">
           <h3 className="text-3xl md:text-4xl font-light text-white mb-4">
-            <span className="font-medium italic instrument">Wissensmanagement</span>
+            <span className="font-medium italic" style={{ fontFamily: "'Instrument Serif', serif" }}>
+              Wissensmanagement
+            </span>
           </h3>
           <p className="text-white/70 text-sm md:text-base font-light max-w-3xl mx-auto leading-relaxed">
             Unser KI-Wissensmanagement vernetzt Ihr Unternehmenswissen. Dokumente, FAQs und interne Daten werden sofort
@@ -96,7 +98,7 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
                     {/* Question */}
                     <div className="flex justify-end">
                       <div className="max-w-[85%] p-4 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-sm">
-                        <p className="text-sm text-gray-900 font-light">{qa.question}</p>
+                        <p className="text-sm text-white font-light">{qa.question}</p>
                       </div>
                     </div>
 
@@ -107,17 +109,17 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
                           <div className="w-6 h-6 rounded-full bg-gradient-to-br from-violet-500/30 to-purple-500/30 border border-violet-500/50 flex items-center justify-center text-xs">
                             🤖
                           </div>
-                          <span className="text-xs text-gray-700 font-light">KI Assistant</span>
+                          <span className="text-xs text-white/70 font-light">KI Assistant</span>
                         </div>
-                        <p className="text-sm text-gray-900 font-light mb-3 leading-relaxed">{qa.answer}</p>
+                        <p className="text-sm text-white font-light mb-3 leading-relaxed">{qa.answer}</p>
 
                         {/* Sources */}
                         <div className="flex flex-wrap gap-2 pt-2 border-t border-white/10">
-                          <span className="text-xs text-gray-700 font-light">Quellen:</span>
+                          <span className="text-xs text-white/70 font-light">Quellen:</span>
                           {qa.sources.map((source, j) => (
                             <span
                               key={j}
-                              className="px-2 py-1 rounded-full bg-white/10 border border-white/20 text-xs text-gray-800 font-light hover:bg-white/20 transition-all cursor-pointer"
+                              className="px-2 py-1 rounded-full bg-white/10 border border-white/20 text-xs text-white/80 font-light hover:bg-white/20 transition-all cursor-pointer"
                             >
                               📄 {source}
                             </span>
@@ -155,7 +157,7 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={(e) => e.key === "Enter" && handleAsk()}
                 placeholder="Stelle eine Frage über Unternehmenswissen..."
-                className="flex-1 px-4 py-3 rounded-full bg-white/5 border border-white/10 text-gray-900 placeholder-gray-600 text-sm font-light focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 backdrop-blur-sm"
+                className="flex-1 px-4 py-3 rounded-full bg-white/5 border border-white/10 text-white placeholder-white/50 text-sm font-light focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 backdrop-blur-sm"
                 disabled={isTyping}
               />
               <button
@@ -178,7 +180,7 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
 
             {/* Badge */}
             <div className="flex justify-center">
-              <div className="px-4 py-2 rounded-full bg-violet-500/20 border border-violet-500/40 text-gray-900 text-xs font-light shadow-lg shadow-violet-500/20">
+              <div className="px-4 py-2 rounded-full bg-violet-500/20 border border-violet-500/40 text-white text-xs font-light shadow-lg shadow-violet-500/20">
                 ✓ Quellen automatisch zitiert
               </div>
             </div>
@@ -252,9 +254,7 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
                       zIndex: 2,
                     }}
                   >
-                    <span className={`text-xs font-light ${isActive ? "text-gray-900" : "text-gray-900"}`}>
-                      {node.label}
-                    </span>
+                    <span className={`text-xs font-light ${isActive ? "text-white" : "text-white"}`}>{node.label}</span>
                   </div>
                 )
               })}
@@ -268,7 +268,7 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
               ].map((stat, i) => (
                 <div key={i} className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm text-center">
                   <div className="text-2xl font-light text-violet-400 mb-1">{stat.value}</div>
-                  <div className="text-xs text-gray-700">{stat.label}</div>
+                  <div className="text-xs text-white/70">{stat.label}</div>
                 </div>
               ))}
             </div>

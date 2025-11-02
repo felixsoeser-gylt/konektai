@@ -108,7 +108,10 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
         {/* Header */}
         <div className="text-center mb-12">
           <h3 className="text-3xl md:text-4xl font-light text-white mb-4">
-            Websites & Apps <span className="font-medium italic instrument">mit KI gebaut</span>
+            Websites & Apps{" "}
+            <span className="font-medium italic" style={{ fontFamily: "'Instrument Serif', serif" }}>
+              mit KI gebaut
+            </span>
           </h3>
           <p className="text-white/70 text-sm md:text-base font-light max-w-3xl mx-auto leading-relaxed">
             Wir entwickeln Websites und Apps, die mit Hilfe von KI entworfen und erstellt werden – schneller,
@@ -138,7 +141,7 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
                   {step.icon}
                 </div>
                 <div className="flex-1">
-                  <div className="text-sm font-medium text-gray-900">{step.label}</div>
+                  <div className="text-sm font-medium text-white">{step.label}</div>
                   {isBuilding && i <= activeStep && (
                     <div className="mt-2 h-1 bg-white/10 rounded-full overflow-hidden">
                       <div className="h-full bg-gradient-to-r from-violet-500 to-purple-500 rounded-full animate-in slide-in-from-left duration-1000" />

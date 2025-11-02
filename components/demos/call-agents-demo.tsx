@@ -88,7 +88,10 @@ export function CallAgentsDemo({ isActive }: { isActive?: boolean }) {
         {/* Header */}
         <div className="text-center mb-12">
           <h3 className="text-3xl md:text-4xl font-light text-white mb-4">
-            KI <span className="font-medium italic instrument">Call Agents</span>
+            KI{" "}
+            <span className="font-medium italic" style={{ fontFamily: "'Instrument Serif', serif" }}>
+              Call Agents
+            </span>
           </h3>
           <p className="text-white/70 text-sm md:text-base font-light max-w-3xl mx-auto leading-relaxed">
             Unsere KI Call Agents beantworten Anrufe automatisch, rund um die Uhr. Sie verstehen Anliegen, terminieren
@@ -161,12 +164,12 @@ export function CallAgentsDemo({ isActive }: { isActive?: boolean }) {
                     key={i}
                     className={`p-4 rounded-2xl backdrop-blur-sm border transition-all duration-500 animate-in slide-in-from-bottom-4 ${
                       line.speaker === "AI Agent"
-                        ? "bg-violet-500/10 border-violet-500/30 text-gray-900 ml-4"
-                        : "bg-white/5 border-white/10 text-gray-900 mr-4"
+                        ? "bg-violet-500/10 border-violet-500/30 text-white ml-4"
+                        : "bg-white/5 border-white/10 text-white mr-4"
                     }`}
                   >
-                    <div className="text-xs font-medium mb-2 text-gray-900">{line.speaker}</div>
-                    <div className="text-sm font-light leading-relaxed text-gray-900">{line.text}</div>
+                    <div className="text-xs font-medium mb-2 text-white/90">{line.speaker}</div>
+                    <div className="text-sm font-light leading-relaxed text-white">{line.text}</div>
                   </div>
                 ))}
             </div>

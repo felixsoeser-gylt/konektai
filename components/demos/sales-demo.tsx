@@ -80,7 +80,10 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
         {/* Header */}
         <div className="text-center mb-12">
           <h3 className="text-3xl md:text-4xl font-light text-white mb-4">
-            Vertrieb & <span className="font-medium italic instrument">Leadgenerierung</span>
+            Vertrieb &{" "}
+            <span className="font-medium italic" style={{ fontFamily: "'Instrument Serif', serif" }}>
+              Leadgenerierung
+            </span>
           </h3>
           <p className="text-white/70 text-sm md:text-base font-light max-w-3xl mx-auto leading-relaxed">
             KIntegration automatisiert Ihre Vertriebsprozesse – von der Lead-Analyse über die Kontaktaufnahme bis zur
@@ -99,8 +102,8 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
                 return (
                   <div key={i} className="space-y-2">
                     <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-900 font-light">{stage.name}</span>
-                      <span className="text-gray-700 font-light">{stage.count} Leads</span>
+                      <span className="text-white font-light">{stage.name}</span>
+                      <span className="text-white/70 font-light">{stage.count} Leads</span>
                     </div>
                     <div
                       className="relative h-20 rounded-2xl backdrop-blur-sm border border-white/20 overflow-hidden transition-all duration-1000 shadow-lg"
@@ -140,7 +143,7 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
 
             {/* AI Badge */}
             <div className="flex justify-center pt-2">
-              <div className="px-4 py-2 rounded-full bg-violet-500/20 border border-violet-500/40 text-gray-900 text-xs font-light shadow-lg shadow-violet-500/20">
+              <div className="px-4 py-2 rounded-full bg-violet-500/20 border border-violet-500/40 text-white text-xs font-light shadow-lg shadow-violet-500/20">
                 ✓ KI-Priorisierung aktiv
               </div>
             </div>
@@ -162,8 +165,8 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">
-                      <h5 className="text-base font-light text-gray-900 mb-1">{lead.name}</h5>
-                      <p className="text-xs text-gray-700 mb-2">Nächste Aktion: {lead.action}</p>
+                      <h5 className="text-base font-light text-white mb-1">{lead.name}</h5>
+                      <p className="text-xs text-white/70 mb-2">Nächste Aktion: {lead.action}</p>
                       <p className="text-sm text-violet-400 font-light">Potenzial: {lead.potential}</p>
                     </div>
                     <div
@@ -180,7 +183,7 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
                   {/* Score Bar */}
                   <div className="space-y-1">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="text-gray-700">Lead Score</span>
+                      <span className="text-white/70">Lead Score</span>
                       <span className="text-violet-400 font-light">{lead.score}%</span>
                     </div>
                     <div className="h-2 bg-white/5 rounded-full overflow-hidden">
@@ -203,7 +206,7 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
               ].map((stat, i) => (
                 <div key={i} className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm text-center">
                   <div className="text-lg font-light text-violet-400 mb-1">{stat.value}</div>
-                  <div className="text-xs text-gray-700">{stat.label}</div>
+                  <div className="text-xs text-white/70">{stat.label}</div>
                 </div>
               ))}
             </div>
