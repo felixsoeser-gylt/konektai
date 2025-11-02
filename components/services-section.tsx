@@ -165,12 +165,12 @@ export default function ServicesSection() {
 
           <div className="flex justify-center items-center w-full px-2 sm:px-4">
             <div
-              className="relative inline-flex gap-2 sm:gap-3 md:gap-6 flex-wrap justify-center max-w-5xl"
+              className="relative flex flex-col sm:flex-row gap-3 sm:gap-3 md:gap-6 justify-center items-center max-w-5xl w-full sm:w-auto"
               role="tablist"
               aria-label="Service categories"
             >
               {/* Optional: Neural network connecting lines */}
-              <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
+              <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none hidden sm:block" />
 
               {tabs.map((tab, index) => (
                 <button
@@ -180,10 +180,11 @@ export default function ServicesSection() {
                   aria-controls={`panel-${tab.id}`}
                   onClick={() => handleTabClick(tab.id)}
                   className={`
-                    relative px-3 py-2 sm:px-4 sm:py-2.5 md:px-6 md:py-3 rounded-full 
-                    text-xs sm:text-sm font-light whitespace-nowrap
+                    relative px-6 py-3 rounded-full 
+                    text-sm font-light whitespace-nowrap
                     transition-all duration-400 ease-out
                     backdrop-blur-md border
+                    w-full sm:w-auto
                     ${
                       activeTab === tab.id
                         ? "bg-white/10 text-white border-white/30 shadow-lg shadow-violet-500/30"
@@ -262,16 +263,12 @@ export default function ServicesSection() {
           >
             <div className="flex justify-center items-center">
               <div
-                className="relative inline-flex gap-2 sm:gap-3 md:gap-6 overflow-x-auto scrollbar-hide pb-2 px-2 sm:px-0"
+                className="relative flex flex-col sm:flex-row gap-3 sm:gap-3 md:gap-6 justify-center items-center w-full sm:w-auto max-w-full px-2 sm:px-0"
                 role="tablist"
                 aria-label="Service categories"
-                style={{
-                  maxWidth: "100%",
-                  WebkitOverflowScrolling: "touch",
-                }}
               >
                 {/* Optional: Neural network connecting lines */}
-                <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
+                <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none hidden sm:block" />
 
                 {tabs.map((tab) => (
                   <button
@@ -281,10 +278,11 @@ export default function ServicesSection() {
                     aria-controls={`panel-${tab.id}`}
                     onClick={() => handleTabClick(tab.id)}
                     className={`
-                      relative px-3 py-2 sm:px-4 sm:py-2.5 md:px-6 md:py-3 rounded-full 
-                      text-xs sm:text-sm font-light whitespace-nowrap
+                      relative px-6 py-3 rounded-full 
+                      text-sm font-light whitespace-nowrap
                       transition-all duration-400 ease-out
-                      backdrop-blur-md border flex-shrink-0
+                      backdrop-blur-md border
+                      w-full sm:w-auto
                       ${
                         activeTab === tab.id
                           ? "bg-white/10 text-white border-white/30 shadow-lg shadow-violet-500/30"

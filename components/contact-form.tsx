@@ -63,10 +63,10 @@ export default function ContactForm() {
 
   return (
     <section id="kontakt" className="relative py-24 overflow-hidden">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Hero section */}
         <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-light text-white mb-6 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-light text-white mb-6 tracking-tight px-2">
             Kontaktieren Sie{" "}
             <span
               className="font-medium italic"
@@ -82,7 +82,7 @@ export default function ContactForm() {
               uns
             </span>
           </h2>
-          <p className="text-white/80 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed">
+          <p className="text-white/80 text-base sm:text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed px-4">
             Wir freuen uns darauf, von Ihrem Projekt zu hören
           </p>
         </div>
