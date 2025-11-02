@@ -72,9 +72,9 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
   }
 
   return (
-    <div className="backdrop-blur-md bg-black/20 border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+    <div className="bg-black/40 border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden">
       {/* Glow effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-violet-500/25 to-purple-500/25 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-violet-500/35 to-purple-500/35 pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto">
         {/* Header */}
@@ -106,10 +106,10 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
                       <span className="text-white/70 font-light">{stage.count} Leads</span>
                     </div>
                     <div
-                      className="relative h-20 rounded-2xl backdrop-blur-sm border border-white/20 overflow-hidden transition-all duration-1000 shadow-lg"
+                      className="relative h-20 rounded-2xl border border-white/20 overflow-hidden transition-all duration-1000 shadow-lg"
                       style={{ width: `${width}%` }}
                     >
-                      <div className={`absolute inset-0 bg-gradient-to-r ${stage.color} opacity-80`} />
+                      <div className={`absolute inset-0 bg-gradient-to-r ${stage.color}`} />
                       <div className="absolute inset-0 flex items-center justify-center">
                         <span className="text-white font-light text-2xl">{stage.count}</span>
                       </div>
@@ -157,7 +157,7 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
               {leads.map((lead, i) => (
                 <div
                   key={i}
-                  className={`p-5 rounded-2xl backdrop-blur-sm border transition-all duration-500 ${
+                  className={`p-5 rounded-2xl border transition-all duration-500 ${
                     isAnimating && i === activeLeadIndex
                       ? "bg-violet-500/20 border-violet-500/30 scale-[1.02] shadow-lg shadow-violet-500/20"
                       : "bg-white/10 border-white/10"
@@ -204,10 +204,7 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
                 { label: "Avg. Deal", value: "€83k" },
                 { label: "Pipeline", value: "€2.8M" },
               ].map((stat, i) => (
-                <div
-                  key={i}
-                  className="p-4 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-sm text-center"
-                >
+                <div key={i} className="p-4 rounded-2xl bg-white/10 border border-white/10 text-center">
                   <div className="text-lg font-light text-violet-400 mb-1">{stat.value}</div>
                   <div className="text-xs text-white/70">{stat.label}</div>
                 </div>
