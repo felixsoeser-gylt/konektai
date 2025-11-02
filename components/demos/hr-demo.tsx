@@ -82,9 +82,17 @@ export function HRDemo({ isActive }: { isActive?: boolean }) {
   }
 
   return (
-    <div className="bg-black/40 border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+    <div
+      className="border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden"
+      style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+    >
       {/* Glow effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-violet-500/35 to-purple-500/35 pointer-events-none" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom right, rgba(139, 92, 246, 0.4), rgba(168, 85, 247, 0.4))",
+        }}
+      />
 
       <div className="relative z-10 max-w-5xl mx-auto">
         {/* Header */}
@@ -112,10 +120,11 @@ export function HRDemo({ isActive }: { isActive?: boolean }) {
                   key={i}
                   onClick={() => setSelectedCandidate(i)}
                   className={`p-5 rounded-2xl border transition-all duration-300 cursor-pointer ${
-                    selectedCandidate === i
-                      ? "bg-violet-500/25 border-violet-500/40 scale-[1.02]"
-                      : "bg-white/15 border-white/20 hover:bg-white/20 hover:border-white/30"
+                    selectedCandidate === i ? "border-violet-500/40 scale-[1.02]" : "hover:border-white/30"
                   }`}
+                  style={{
+                    backgroundColor: selectedCandidate === i ? "rgba(139, 92, 246, 0.3)" : "rgba(255, 255, 255, 0.2)",
+                  }}
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className="flex-1">
@@ -175,14 +184,18 @@ export function HRDemo({ isActive }: { isActive?: boolean }) {
             {/* Pipeline Stages */}
             <div className="space-y-4">
               {currentStages.map((stage, i) => (
-                <div key={i} className="p-5 rounded-2xl bg-white/15 border border-white/20 transition-all duration-500">
+                <div
+                  key={i}
+                  className="p-5 rounded-2xl border border-white/20 transition-all duration-500"
+                  style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
+                >
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
                       <div
                         className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-light transition-all duration-500 ${
                           isAnimating && stage.count > 0
                             ? "bg-gradient-to-br from-violet-500/30 to-purple-500/30 border-2 border-violet-500/50 text-white shadow-lg shadow-violet-500/30"
-                            : "bg-white/10 border border-white/10 text-white/70"
+                            : "bg-white/10 text-white/70"
                         }`}
                       >
                         {i + 1}

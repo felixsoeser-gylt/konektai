@@ -80,9 +80,17 @@ export function CallAgentsDemo({ isActive }: { isActive?: boolean }) {
   }
 
   return (
-    <div className="bg-black/40 border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+    <div
+      className="border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden"
+      style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+    >
       {/* Glow effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-violet-500/35 to-purple-500/35 pointer-events-none" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom right, rgba(139, 92, 246, 0.4), rgba(168, 85, 247, 0.4))",
+        }}
+      />
 
       <div className="relative z-10 max-w-5xl mx-auto">
         {/* Header */}
@@ -127,7 +135,10 @@ export function CallAgentsDemo({ isActive }: { isActive?: boolean }) {
 
             {/* Waveform Visualization */}
             <div className="w-full max-w-sm">
-              <div className="flex items-end justify-center gap-1 h-24 bg-white/10 rounded-2xl border border-white/10 p-4">
+              <div
+                className="flex items-end justify-center gap-1 h-24 rounded-2xl border border-white/10 p-4"
+                style={{ backgroundColor: "rgba(255, 255, 255, 0.15)" }}
+              >
                 {waveformHeights.map((height, i) => (
                   <div
                     key={i}
@@ -164,9 +175,13 @@ export function CallAgentsDemo({ isActive }: { isActive?: boolean }) {
                     key={i}
                     className={`p-4 rounded-2xl border transition-all duration-500 animate-in slide-in-from-bottom-4 ${
                       line.speaker === "AI Agent"
-                        ? "bg-violet-500/25 border-violet-500/40 text-white ml-4"
-                        : "bg-white/15 border-white/20 text-white mr-4"
+                        ? "border-violet-500/40 text-white ml-4"
+                        : "border-white/20 text-white mr-4"
                     }`}
+                    style={{
+                      backgroundColor:
+                        line.speaker === "AI Agent" ? "rgba(139, 92, 246, 0.3)" : "rgba(255, 255, 255, 0.2)",
+                    }}
                   >
                     <div className="text-xs font-medium mb-2 text-white/90">{line.speaker}</div>
                     <div className="text-sm font-light leading-relaxed text-white">{line.text}</div>

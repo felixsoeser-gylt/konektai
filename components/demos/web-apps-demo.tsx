@@ -100,9 +100,17 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
   const fgOffset = getParallaxOffset(0.9)
 
   return (
-    <div className="bg-black/40 border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+    <div
+      className="border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden"
+      style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+    >
       {/* Glow effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-violet-500/35 to-purple-500/35 pointer-events-none" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom right, rgba(139, 92, 246, 0.4), rgba(168, 85, 247, 0.4))",
+        }}
+      />
 
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Header */}
@@ -127,9 +135,13 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
                 key={i}
                 className={`flex items-center gap-4 p-5 rounded-2xl border transition-all duration-500 ${
                   isBuilding && i <= activeStep
-                    ? "bg-violet-500/25 border-violet-500/40 scale-100"
-                    : "bg-white/15 border-white/20 scale-95 opacity-50"
+                    ? "border-violet-500/40 scale-100"
+                    : "border-white/20 scale-95 opacity-50"
                 }`}
+                style={{
+                  backgroundColor:
+                    isBuilding && i <= activeStep ? "rgba(139, 92, 246, 0.3)" : "rgba(255, 255, 255, 0.2)",
+                }}
               >
                 <div
                   className={`flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center text-2xl transition-all duration-500 ${
@@ -177,7 +189,7 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
               >
                 {/* Background Layer (deepest) - Shadow/Depth */}
                 <div
-                  className={`absolute inset-0 rounded-2xl bg-gradient-to-br blur-xl transition-all duration-1000 ${
+                  className={`absolute inset-0 rounded-2xl blur-xl transition-all duration-1000 ${
                     assemblyPhase === "base" ||
                     assemblyPhase === "nav" ||
                     assemblyPhase === "hero" ||
@@ -194,7 +206,7 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
 
                 {/* Main Website Layer */}
                 <div
-                  className={`absolute inset-0 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden shadow-2xl transition-all duration-1000 ${
+                  className={`absolute inset-0 rounded-2xl overflow-hidden shadow-2xl transition-all duration-1000 ${
                     assemblyPhase === "base" ||
                     assemblyPhase === "nav" ||
                     assemblyPhase === "hero" ||

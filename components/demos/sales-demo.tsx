@@ -72,9 +72,17 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
   }
 
   return (
-    <div className="bg-black/40 border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+    <div
+      className="border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden"
+      style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+    >
       {/* Glow effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-violet-500/35 to-purple-500/35 pointer-events-none" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom right, rgba(139, 92, 246, 0.4), rgba(168, 85, 247, 0.4))",
+        }}
+      />
 
       <div className="relative z-10 max-w-5xl mx-auto">
         {/* Header */}
@@ -159,9 +167,13 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
                   key={i}
                   className={`p-5 rounded-2xl border transition-all duration-500 ${
                     isAnimating && i === activeLeadIndex
-                      ? "bg-violet-500/25 border-violet-500/40 scale-[1.02] shadow-lg shadow-violet-500/20"
-                      : "bg-white/15 border-white/20"
+                      ? "border-violet-500/40 scale-[1.02] shadow-lg shadow-violet-500/20"
+                      : "border-white/20"
                   }`}
+                  style={{
+                    backgroundColor:
+                      isAnimating && i === activeLeadIndex ? "rgba(139, 92, 246, 0.3)" : "rgba(255, 255, 255, 0.2)",
+                  }}
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">
@@ -204,7 +216,11 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
                 { label: "Avg. Deal", value: "€83k" },
                 { label: "Pipeline", value: "€2.8M" },
               ].map((stat, i) => (
-                <div key={i} className="p-4 rounded-2xl bg-white/15 border border-white/20 text-center">
+                <div
+                  key={i}
+                  className="p-4 rounded-2xl border border-white/20 text-center"
+                  style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
+                >
                   <div className="text-lg font-light text-violet-400 mb-1">{stat.value}</div>
                   <div className="text-xs text-white/70">{stat.label}</div>
                 </div>

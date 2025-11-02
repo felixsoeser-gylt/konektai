@@ -67,9 +67,17 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
   }
 
   return (
-    <div className="bg-black/40 border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+    <div
+      className="border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden"
+      style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+    >
       {/* Glow effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-violet-500/35 to-purple-500/35 pointer-events-none" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom right, rgba(139, 92, 246, 0.4), rgba(168, 85, 247, 0.4))",
+        }}
+      />
 
       <div className="relative z-10 max-w-5xl mx-auto">
         {/* Header */}
@@ -97,14 +105,20 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
                   <div key={i} className="space-y-3 animate-in slide-in-from-bottom-4">
                     {/* Question */}
                     <div className="flex justify-end">
-                      <div className="max-w-[85%] p-4 rounded-2xl bg-white/20 border border-white/30">
+                      <div
+                        className="max-w-[85%] p-4 rounded-2xl border border-white/30"
+                        style={{ backgroundColor: "rgba(255, 255, 255, 0.25)" }}
+                      >
                         <p className="text-sm text-white font-light">{qa.question}</p>
                       </div>
                     </div>
 
                     {/* Answer */}
                     <div className="flex justify-start">
-                      <div className="max-w-[85%] p-4 rounded-2xl bg-violet-500/25 border border-violet-500/40">
+                      <div
+                        className="max-w-[85%] p-4 rounded-2xl border border-violet-500/40"
+                        style={{ backgroundColor: "rgba(139, 92, 246, 0.3)" }}
+                      >
                         <div className="flex items-center gap-2 mb-2">
                           <div className="w-6 h-6 rounded-full bg-gradient-to-br from-violet-500/30 to-purple-500/30 border border-violet-500/50 flex items-center justify-center text-xs">
                             🤖
@@ -132,7 +146,10 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
 
               {isTyping && (
                 <div className="flex justify-start">
-                  <div className="p-4 rounded-2xl bg-violet-500/25 border border-violet-500/40">
+                  <div
+                    className="p-4 rounded-2xl border border-violet-500/40"
+                    style={{ backgroundColor: "rgba(139, 92, 246, 0.3)" }}
+                  >
                     <div className="flex gap-1">
                       <div className="w-2 h-2 rounded-full bg-violet-400 animate-bounce" />
                       <div
@@ -190,7 +207,10 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
           <div className="space-y-6">
             <h4 className="text-xl font-light text-white mb-4">Wissens-Netzwerk</h4>
 
-            <div className="relative h-[400px] rounded-2xl bg-white/15 border border-white/20 p-8 overflow-hidden">
+            <div
+              className="relative h-[400px] rounded-2xl border border-white/20 p-8 overflow-hidden"
+              style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
+            >
               {/* Connection Lines */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }}>
                 {knowledgeNodes.map((node, i) => {
@@ -266,7 +286,11 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
                 { label: "Dokumente", value: "2,847" },
                 { label: "Verbindungen", value: "12,394" },
               ].map((stat, i) => (
-                <div key={i} className="p-4 rounded-2xl bg-white/15 border border-white/20 text-center">
+                <div
+                  key={i}
+                  className="p-4 rounded-2xl border border-white/20 text-center"
+                  style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
+                >
                   <div className="text-2xl font-light text-violet-400 mb-1">{stat.value}</div>
                   <div className="text-xs text-white/70">{stat.label}</div>
                 </div>
