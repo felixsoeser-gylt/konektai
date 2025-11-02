@@ -111,10 +111,10 @@ export function HRDemo({ isActive }: { isActive?: boolean }) {
                 <div
                   key={i}
                   onClick={() => setSelectedCandidate(i)}
-                  className={`p-5 rounded-2xl backdrop-blur-sm border transition-all duration-300 cursor-pointer ${
+                  className={`p-5 rounded-2xl border transition-all duration-300 cursor-pointer ${
                     selectedCandidate === i
-                      ? "bg-violet-500/20 border-violet-500/30 scale-[1.02]"
-                      : "bg-white/10 border-white/10 hover:bg-white/15 hover:border-white/20"
+                      ? "bg-violet-500/25 border-violet-500/40 scale-[1.02]"
+                      : "bg-white/15 border-white/20 hover:bg-white/20 hover:border-white/30"
                   }`}
                 >
                   <div className="flex items-start justify-between mb-4">
@@ -175,10 +175,7 @@ export function HRDemo({ isActive }: { isActive?: boolean }) {
             {/* Pipeline Stages */}
             <div className="space-y-4">
               {currentStages.map((stage, i) => (
-                <div
-                  key={i}
-                  className="p-5 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-sm transition-all duration-500"
-                >
+                <div key={i} className="p-5 rounded-2xl bg-white/15 border border-white/20 transition-all duration-500">
                   <div className="flex items-center justify-between mb-3">
                     <div className="flex items-center gap-3">
                       <div
@@ -220,14 +217,15 @@ export function HRDemo({ isActive }: { isActive?: boolean }) {
 
             {/* Stats */}
             <div className="grid grid-cols-2 gap-3 pt-4">
-              <div className="p-4 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-sm text-center">
-                <div className="text-2xl font-light text-violet-400 mb-1">78%</div>
-                <div className="text-xs text-white/60">Erfolgsquote</div>
-              </div>
-              <div className="p-4 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-sm text-center">
-                <div className="text-2xl font-light text-violet-400 mb-1">12 Tage</div>
-                <div className="text-xs text-white/60">Ø Time-to-Hire</div>
-              </div>
+              {[
+                { label: "Erfolgsquote", value: "78%" },
+                { label: "Ø Time-to-Hire", value: "12 Tage" },
+              ].map((stat, i) => (
+                <div key={i} className="p-4 rounded-2xl bg-white/15 border border-white/20 text-center">
+                  <div className="text-2xl font-light text-violet-400 mb-1">{stat.value}</div>
+                  <div className="text-xs text-white/60">{stat.label}</div>
+                </div>
+              ))}
             </div>
           </div>
         </div>

@@ -97,14 +97,14 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
                   <div key={i} className="space-y-3 animate-in slide-in-from-bottom-4">
                     {/* Question */}
                     <div className="flex justify-end">
-                      <div className="max-w-[85%] p-4 rounded-2xl bg-white/15 border border-white/20 backdrop-blur-sm">
+                      <div className="max-w-[85%] p-4 rounded-2xl bg-white/20 border border-white/30">
                         <p className="text-sm text-white font-light">{qa.question}</p>
                       </div>
                     </div>
 
                     {/* Answer */}
                     <div className="flex justify-start">
-                      <div className="max-w-[85%] p-4 rounded-2xl bg-violet-500/20 border border-violet-500/20 backdrop-blur-sm">
+                      <div className="max-w-[85%] p-4 rounded-2xl bg-violet-500/25 border border-violet-500/40">
                         <div className="flex items-center gap-2 mb-2">
                           <div className="w-6 h-6 rounded-full bg-gradient-to-br from-violet-500/30 to-purple-500/30 border border-violet-500/50 flex items-center justify-center text-xs">
                             🤖
@@ -132,7 +132,7 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
 
               {isTyping && (
                 <div className="flex justify-start">
-                  <div className="p-4 rounded-2xl bg-violet-500/20 border border-violet-500/20 backdrop-blur-sm">
+                  <div className="p-4 rounded-2xl bg-violet-500/25 border border-violet-500/40">
                     <div className="flex gap-1">
                       <div className="w-2 h-2 rounded-full bg-violet-400 animate-bounce" />
                       <div
@@ -157,7 +157,7 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={(e) => e.key === "Enter" && handleAsk()}
                 placeholder="Stelle eine Frage über Unternehmenswissen..."
-                className="flex-1 px-4 py-3 rounded-full bg-white/10 border border-white/10 text-white placeholder-white/50 text-sm font-light focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 backdrop-blur-sm"
+                className="flex-1 px-4 py-3 rounded-full bg-white/15 border border-white/20 text-white placeholder-white/50 text-sm font-light focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50"
                 disabled={isTyping}
               />
               <button
@@ -190,7 +190,7 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
           <div className="space-y-6">
             <h4 className="text-xl font-light text-white mb-4">Wissens-Netzwerk</h4>
 
-            <div className="relative h-[400px] rounded-2xl bg-white/10 border border-white/10 backdrop-blur-sm p-8 overflow-hidden">
+            <div className="relative h-[400px] rounded-2xl bg-white/15 border border-white/20 p-8 overflow-hidden">
               {/* Connection Lines */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }}>
                 {knowledgeNodes.map((node, i) => {
@@ -242,10 +242,10 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
                 return (
                   <div
                     key={i}
-                    className={`absolute w-16 h-16 rounded-full flex items-center justify-center backdrop-blur-sm transition-all duration-500 ${
+                    className={`absolute w-16 h-16 rounded-full flex items-center justify-center transition-all duration-500 ${
                       isActive
-                        ? "bg-violet-500/30 border-2 border-violet-500/60 scale-110 shadow-lg shadow-violet-500/40"
-                        : "bg-white/15 border border-white/20 hover:bg-violet-500/20 hover:border-violet-500/40 hover:scale-105"
+                        ? "bg-violet-500/35 border-2 border-violet-500/60 scale-110 shadow-lg shadow-violet-500/40"
+                        : "bg-white/20 border border-white/30 hover:bg-violet-500/25 hover:border-violet-500/50 hover:scale-105"
                     }`}
                     style={{
                       top: `calc(50% + ${y}px)`,
@@ -266,10 +266,7 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
                 { label: "Dokumente", value: "2,847" },
                 { label: "Verbindungen", value: "12,394" },
               ].map((stat, i) => (
-                <div
-                  key={i}
-                  className="p-4 rounded-2xl bg-white/10 border border-white/10 backdrop-blur-sm text-center"
-                >
+                <div key={i} className="p-4 rounded-2xl bg-white/15 border border-white/20 text-center">
                   <div className="text-2xl font-light text-violet-400 mb-1">{stat.value}</div>
                   <div className="text-xs text-white/70">{stat.label}</div>
                 </div>

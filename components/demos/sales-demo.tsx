@@ -159,8 +159,8 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
                   key={i}
                   className={`p-5 rounded-2xl border transition-all duration-500 ${
                     isAnimating && i === activeLeadIndex
-                      ? "bg-violet-500/20 border-violet-500/30 scale-[1.02] shadow-lg shadow-violet-500/20"
-                      : "bg-white/10 border-white/10"
+                      ? "bg-violet-500/25 border-violet-500/40 scale-[1.02] shadow-lg shadow-violet-500/20"
+                      : "bg-white/15 border-white/20"
                   }`}
                 >
                   <div className="flex items-start justify-between mb-3">
@@ -204,7 +204,7 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
                 { label: "Avg. Deal", value: "€83k" },
                 { label: "Pipeline", value: "€2.8M" },
               ].map((stat, i) => (
-                <div key={i} className="p-4 rounded-2xl bg-white/10 border border-white/10 text-center">
+                <div key={i} className="p-4 rounded-2xl bg-white/15 border border-white/20 text-center">
                   <div className="text-lg font-light text-violet-400 mb-1">{stat.value}</div>
                   <div className="text-xs text-white/70">{stat.label}</div>
                 </div>

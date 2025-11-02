@@ -125,10 +125,10 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
             {buildingSteps.map((step, i) => (
               <div
                 key={i}
-                className={`flex items-center gap-4 p-5 rounded-2xl backdrop-blur-sm border transition-all duration-500 ${
+                className={`flex items-center gap-4 p-5 rounded-2xl border transition-all duration-500 ${
                   isBuilding && i <= activeStep
-                    ? "bg-violet-500/20 border-violet-500/30 scale-100"
-                    : "bg-white/10 border-white/10 scale-95 opacity-50"
+                    ? "bg-violet-500/25 border-violet-500/40 scale-100"
+                    : "bg-white/15 border-white/20 scale-95 opacity-50"
                 }`}
               >
                 <div
@@ -213,7 +213,7 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
                 >
                   {/* Navigation Bar */}
                   <div
-                    className={`flex items-center justify-between px-6 py-4 bg-black/40 backdrop-blur-md border-b border-white/10 transition-all duration-500 ${
+                    className={`flex items-center justify-between px-6 py-4 bg-black/60 border-b border-white/10 transition-all duration-500 ${
                       assemblyPhase === "nav" ||
                       assemblyPhase === "hero" ||
                       assemblyPhase === "cards" ||
@@ -285,7 +285,7 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
                         >
                           Jetzt anfragen
                         </button>
-                        <button className="px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-xs font-medium hover:bg-white/20 transition-all">
+                        <button className="px-5 py-2.5 rounded-full bg-white/10 border border-white/20 text-white text-xs font-medium hover:bg-white/20 transition-all">
                           {isThemeActive ? "Notdienst: 24/7" : "Mehr erfahren"}
                         </button>
                       </div>
@@ -309,7 +309,7 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
                           ].map((feature, i) => (
                             <div
                               key={i}
-                              className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-3 hover:bg-white/15 hover:border-amber-500/30 transition-all duration-1000 group"
+                              className="bg-white/15 border border-white/20 rounded-xl p-3 hover:bg-white/20 hover:border-amber-500/30 transition-all duration-1000 group"
                             >
                               <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">
                                 {feature.icon}
@@ -325,7 +325,7 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
                           ].map((feature, i) => (
                             <div
                               key={i}
-                              className="bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-3 hover:bg-white/15 hover:border-violet-500/30 transition-all duration-1000 group"
+                              className="bg-white/15 border border-white/20 rounded-xl p-3 hover:bg-white/20 hover:border-violet-500/30 transition-all duration-1000 group"
                             >
                               <div className="text-2xl mb-2 group-hover:scale-110 transition-transform">
                                 {feature.icon}
@@ -338,7 +338,7 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
                   </div>
 
                   {/* Footer */}
-                  <div className="absolute bottom-0 left-0 right-0 px-6 py-3 bg-black/60 backdrop-blur-md border-t border-white/10">
+                  <div className="absolute bottom-0 left-0 right-0 px-6 py-3 bg-black/80 border-t border-white/10">
                     <div className="flex items-center justify-between text-[10px] text-white/40">
                       <span>{isThemeActive ? "© 2025 ElektroProfi GmbH" : "© 2025 MeinBusiness GmbH"}</span>
                       <div className="flex gap-4">

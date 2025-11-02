@@ -162,10 +162,10 @@ export function CallAgentsDemo({ isActive }: { isActive?: boolean }) {
                 transcript.slice(0, currentLine + 1).map((line, i) => (
                   <div
                     key={i}
-                    className={`p-4 rounded-2xl backdrop-blur-sm border transition-all duration-500 animate-in slide-in-from-bottom-4 ${
+                    className={`p-4 rounded-2xl border transition-all duration-500 animate-in slide-in-from-bottom-4 ${
                       line.speaker === "AI Agent"
-                        ? "bg-violet-500/20 border-violet-500/30 text-white ml-4"
-                        : "bg-white/10 border-white/10 text-white mr-4"
+                        ? "bg-violet-500/25 border-violet-500/40 text-white ml-4"
+                        : "bg-white/15 border-white/20 text-white mr-4"
                     }`}
                   >
                     <div className="text-xs font-medium mb-2 text-white/90">{line.speaker}</div>
