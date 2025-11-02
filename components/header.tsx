@@ -24,7 +24,7 @@ export default function Header() {
           href="#kontakt"
           className="text-white/80 hover:text-white text-xs font-light px-3 py-2 rounded-full hover:bg-white/10 transition-all duration-200"
         >
-          Kontak
+          Kontakt
         </a>
       </nav>
 

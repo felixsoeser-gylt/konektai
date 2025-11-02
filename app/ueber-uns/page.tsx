@@ -28,7 +28,17 @@ export default function UeberUnsPage() {
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-6xl font-light text-white mb-6 tracking-tight">
               Über{" "}
-              <span className="font-medium italic instrument bg-gradient-to-r from-violet-400 via-purple-400 to-violet-400 bg-clip-text text-transparent">
+              <span
+                className="font-medium italic"
+                style={{
+                  fontFamily: "'Instrument Serif', serif",
+                  background: "linear-gradient(to right, rgb(167, 139, 250), rgb(192, 132, 252), rgb(167, 139, 250))",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  color: "rgb(192, 132, 252)",
+                }}
+              >
                 KonektAI
               </span>
             </h1>

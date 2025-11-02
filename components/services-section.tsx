@@ -116,13 +116,23 @@ export default function ServicesSection() {
             className="text-5xl md:text-7xl font-light text-white mb-6 tracking-tight text-center"
             style={{
               animation: "scaleIn 800ms cubic-bezier(0.4, 0, 0.2, 1) forwards",
-              textShadow: "0 0 40px rgba(139, 92, 246, 0.3), 0 0 80px rgba(139, 92, 246, 0.1)",
+              textShadow: "0 0 40px rgba(139, 92, 246, 0.3), 0 0 80px rgba(139, 92, 252, 0.1)",
               transform: `translate(${mousePosition.x * 10}px, ${mousePosition.y * 10}px)`,
               transition: "transform 0.3s ease-out",
             }}
           >
             Unsere{" "}
-            <span className="font-medium italic instrument bg-gradient-to-r from-violet-400 via-purple-400 to-violet-400 bg-clip-text text-transparent">
+            <span
+              className="font-medium italic"
+              style={{
+                fontFamily: "'Instrument Serif', serif",
+                background: "linear-gradient(to right, rgb(167, 139, 250), rgb(192, 132, 252), rgb(167, 139, 250))",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                color: "rgb(192, 132, 252)",
+              }}
+            >
               Leistungen
             </span>
           </h2>
@@ -224,7 +234,20 @@ export default function ServicesSection() {
         <>
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-light text-white mb-4 tracking-tight">
-              Unsere <span className="font-medium italic instrument">Leistungen</span>
+              Unsere{" "}
+              <span
+                className="font-medium italic"
+                style={{
+                  fontFamily: "'Instrument Serif', serif",
+                  background: "linear-gradient(to right, rgb(167, 139, 250), rgb(192, 132, 252), rgb(167, 139, 250))",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                  color: "rgb(192, 132, 252)",
+                }}
+              >
+                Leistungen
+              </span>
             </h2>
             <p className="text-white/70 text-sm font-light max-w-2xl mx-auto leading-relaxed">
               Maßgeschneiderte KI-Lösungen für Ihr Unternehmen

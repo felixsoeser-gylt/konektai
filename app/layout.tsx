@@ -18,6 +18,7 @@ const instrumentSerif = Instrument_Serif({
   style: ["normal", "italic"],
   variable: "--font-instrument-serif",
   display: "swap",
+  preload: true,
 })
 
 export const metadata: Metadata = {
@@ -34,12 +35,18 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link
+          rel="preload"
+          href="/_next/static/media/instrument-serif-latin-400-italic.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
         <style>{`
 html {
   font-family: ${figtree.style.fontFamily};
-  --font-sans: ${figtree.variable};
-  --font-mono: ${GeistMono.variable};
-  /* Fixed font variable to use actual font family instead of variable name */
+  --font-sans: ${figtree.style.fontFamily};
+  --font-mono: ${GeistMono.style.fontFamily};
   --font-instrument-serif: ${instrumentSerif.style.fontFamily};
 }
         `}</style>
