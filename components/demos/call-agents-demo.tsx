@@ -168,18 +168,6 @@ export function CallAgentsDemo({ isActive }: { isActive?: boolean }) {
                 ))}
               </div>
             </div>
-
-            {/* Control Button */}
-            <div className="flex gap-3">
-              {isAnimating && (
-                <button
-                  onClick={handleReset}
-                  className="px-8 py-3 rounded-full bg-white/10 border border-white/20 text-white font-normal text-sm transition-all duration-300 hover:bg-white/20"
-                >
-                  Zurücksetzen
-                </button>
-              )}
-            </div>
           </div>
 
           {/* Right: Conversation Transcript */}
@@ -228,9 +216,16 @@ export function CallAgentsDemo({ isActive }: { isActive?: boolean }) {
 
         {/* CTA */}
         <div className="mt-12 text-center">
-          <button className="px-8 py-3 rounded-full bg-white text-black font-normal text-sm transition-all duration-300 hover:bg-white/90 hover:shadow-lg">
-            Jetzt Demo ansehen
-          </button>
+          <a
+            href="#kontakt"
+            onClick={(e) => {
+              e.preventDefault()
+              document.getElementById("kontakt")?.scrollIntoView({ behavior: "smooth" })
+            }}
+            className="inline-block px-8 py-3 rounded-full bg-white text-black font-normal text-sm transition-all duration-300 hover:bg-white/90 hover:shadow-lg"
+          >
+            {"Jetzt KI integrieren!"}
+          </a>
         </div>
       </div>
     </div>

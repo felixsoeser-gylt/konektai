@@ -20,17 +20,27 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
   const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 })
 
   useEffect(() => {
+    let rafId: number | null = null
+
     const handleMouseMove = (e: MouseEvent) => {
-      if (mockupRef.current) {
-        const rect = mockupRef.current.getBoundingClientRect()
-        const x = (e.clientX - rect.left) / rect.width
-        const y = (e.clientY - rect.top) / rect.height
-        setMousePosition({ x, y })
-      }
+      if (rafId) return
+
+      rafId = requestAnimationFrame(() => {
+        if (mockupRef.current) {
+          const rect = mockupRef.current.getBoundingClientRect()
+          const x = (e.clientX - rect.left) / rect.width
+          const y = (e.clientY - rect.top) / rect.height
+          setMousePosition({ x, y })
+        }
+        rafId = null
+      })
     }
 
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
+    window.addEventListener("mousemove", handleMouseMove, { passive: true })
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove)
+      if (rafId) cancelAnimationFrame(rafId)
+    }
   }, [])
 
   useEffect(() => {
@@ -77,13 +87,6 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
 
   const handleStart = () => {
     setIsBuilding(true)
-    setActiveStep(0)
-    setAssemblyPhase("idle")
-    setIsThemeActive(false)
-  }
-
-  const handleReset = () => {
-    setIsBuilding(false)
     setActiveStep(0)
     setAssemblyPhase("idle")
     setIsThemeActive(false)
@@ -423,17 +426,21 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
                   : "Sehen Sie, wie KI eine professionelle Website für Ihr Business erstellt – vom Design bis zur Funktionalität."}
               </p>
 
-              {/* Control Buttons */}
-              {isBuilding && (
-                <div className="flex gap-3 justify-center">
-                  <button
-                    onClick={handleReset}
-                    className="px-4 sm:px-5 md:px-6 py-2 md:py-2.5 rounded-full bg-white/10 border border-white/20 text-white font-normal text-xs sm:text-sm transition-all duration-300 hover:bg-white/20"
-                  >
-                    Zurücksetzen
-                  </button>
-                </div>
-              )}
+              <div className="flex justify-center">
+                <a
+                  href="#kontakt"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    const kontaktSection = document.getElementById("kontakt")
+                    if (kontaktSection) {
+                      kontaktSection.scrollIntoView({ behavior: "smooth", block: "start" })
+                    }
+                  }}
+                  className="inline-block px-8 py-3 rounded-full bg-white text-black font-normal text-sm transition-all duration-300 hover:bg-white/90 hover:shadow-lg"
+                >
+                  Jetzt KI integrieren!
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -457,6 +464,13 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
           [style*="transform: rotateY"] {
             transform: rotateY(0deg) !important;
           }
+        }
+        /* Add will-change hints for better performance */
+        [style*="transform: translateZ"] {
+          will-change: transform;
+        }
+        [style*="rotateY"] {
+          will-change: transform;
         }
       `}</style>
     </div>

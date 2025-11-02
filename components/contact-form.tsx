@@ -14,12 +14,42 @@ export default function ContactForm() {
     message: "",
   })
   const [showToast, setShowToast] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [toastMessage, setToastMessage] = useState("")
+  const [toastType, setToastType] = useState<"success" | "error">("success")
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setShowToast(true)
-    setTimeout(() => setShowToast(false), 4000)
-    setFormData({ name: "", email: "", phone: "", subject: "", message: "" })
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setToastType("success")
+        setToastMessage("Nachricht erfolgreich gesendet!")
+        setFormData({ name: "", email: "", phone: "", subject: "", message: "" })
+      } else {
+        setToastType("error")
+        setToastMessage(data.error || "Fehler beim Senden der Nachricht")
+      }
+    } catch (error) {
+      console.error("[v0] Form submission error:", error)
+      setToastType("error")
+      setToastMessage("Netzwerkfehler. Bitte versuchen Sie es später erneut.")
+    } finally {
+      setIsSubmitting(false)
+      setShowToast(true)
+      setTimeout(() => setShowToast(false), 4000)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -225,10 +255,39 @@ export default function ContactForm() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white rounded-lg font-medium transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-violet-500/50"
+                disabled={isSubmitting}
+                className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white rounded-lg font-medium transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-violet-500/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
-                <Send className="w-5 h-5" />
-                Nachricht senden
+                {isSubmitting ? (
+                  <>
+                    <svg
+                      className="animate-spin h-5 w-5"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                    Wird gesendet...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    Nachricht senden
+                  </>
+                )}
               </button>
 
               <p className="text-white/50 text-xs text-center">
@@ -239,7 +298,7 @@ export default function ContactForm() {
         </div>
       </div>
 
-      {/* Success Toast */}
+      {/* Success/Error Toast */}
       {showToast && (
         <div
           className="fixed bottom-8 right-8 z-50 backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-4 shadow-2xl shadow-violet-500/20 animate-in slide-in-from-bottom-4 duration-500"
@@ -248,12 +307,20 @@ export default function ContactForm() {
           }}
         >
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-violet-500/20 flex items-center justify-center">
-              <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-              </svg>
+            <div
+              className={`w-8 h-8 rounded-full ${toastType === "success" ? "bg-violet-500/20" : "bg-red-500/20"} flex items-center justify-center`}
+            >
+              {toastType === "success" ? (
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              ) : (
+                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              )}
             </div>
-            <p className="text-white text-sm font-light">Nachricht erfolgreich gesendet!</p>
+            <p className="text-white text-sm font-light">{toastMessage}</p>
           </div>
         </div>
       )}
