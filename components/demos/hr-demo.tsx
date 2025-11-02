@@ -140,8 +140,11 @@ export function HRDemo({ isActive }: { isActive?: boolean }) {
                   {/* Score Bar */}
                   <div className="mb-4 h-2 bg-white/10 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-gradient-to-r from-violet-500 to-purple-500 rounded-full transition-all duration-1000"
-                      style={{ width: `${candidate.score}%` }}
+                      className="h-full rounded-full transition-all duration-1000"
+                      style={{
+                        width: `${candidate.score}%`,
+                        background: "linear-gradient(to right, rgb(139, 92, 246), rgb(168, 85, 247))",
+                      }}
                     />
                   </div>
 
@@ -194,9 +197,15 @@ export function HRDemo({ isActive }: { isActive?: boolean }) {
                       <div
                         className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-light transition-all duration-500 ${
                           isAnimating && stage.count > 0
-                            ? "bg-gradient-to-br from-violet-500/30 to-purple-500/30 border-2 border-violet-500/50 text-white shadow-lg shadow-violet-500/30"
+                            ? "border-2 border-violet-500/50 text-white shadow-lg shadow-violet-500/30"
                             : "bg-white/10 text-white/70"
                         }`}
+                        style={{
+                          background:
+                            isAnimating && stage.count > 0
+                              ? "linear-gradient(to bottom right, rgba(139, 92, 246, 0.3), rgba(168, 85, 247, 0.3))"
+                              : undefined,
+                        }}
                       >
                         {i + 1}
                       </div>
@@ -208,8 +217,11 @@ export function HRDemo({ isActive }: { isActive?: boolean }) {
                   {/* Progress Bar */}
                   <div className="h-2 bg-white/10 rounded-full overflow-hidden">
                     <div
-                      className="h-full bg-gradient-to-r from-violet-500 to-purple-500 rounded-full transition-all duration-1000"
-                      style={{ width: `${(stage.count / stage.target) * 100}%` }}
+                      className="h-full rounded-full transition-all duration-1000"
+                      style={{
+                        width: `${(stage.count / stage.target) * 100}%`,
+                        background: "linear-gradient(to right, rgb(139, 92, 246), rgb(168, 85, 247))",
+                      }}
                     />
                   </div>
                 </div>

@@ -146,9 +146,15 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
                 <div
                   className={`flex-shrink-0 w-14 h-14 rounded-xl flex items-center justify-center text-2xl transition-all duration-500 ${
                     isBuilding && i <= activeStep
-                      ? "bg-gradient-to-br from-violet-500/30 to-purple-500/30 border-2 border-violet-500/50 shadow-lg shadow-violet-500/30"
+                      ? "border-2 border-violet-500/50 shadow-lg shadow-violet-500/30"
                       : "bg-white/10 border border-white/10"
                   }`}
+                  style={{
+                    background:
+                      isBuilding && i <= activeStep
+                        ? "linear-gradient(to bottom right, rgba(139, 92, 246, 0.3), rgba(168, 85, 247, 0.3))"
+                        : undefined,
+                  }}
                 >
                   {step.icon}
                 </div>
@@ -156,7 +162,10 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
                   <div className="text-sm font-medium text-white">{step.label}</div>
                   {isBuilding && i <= activeStep && (
                     <div className="mt-2 h-1 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full bg-gradient-to-r from-violet-500 to-purple-500 rounded-full animate-in slide-in-from-left duration-1000" />
+                      <div
+                        className="h-full rounded-full animate-in slide-in-from-left duration-1000"
+                        style={{ background: "linear-gradient(to right, rgb(139, 92, 246), rgb(168, 85, 247))" }}
+                      />
                     </div>
                   )}
                 </div>
@@ -198,9 +207,12 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
                     assemblyPhase === "complete"
                       ? "opacity-100 scale-100"
                       : "opacity-0 scale-95"
-                  } ${isThemeActive ? "from-amber-950/60 to-orange-950/60" : "from-violet-950/60 to-purple-950/60"}`}
+                  }`}
                   style={{
                     transform: `translateZ(-60px) translate(${bgOffset.x}px, ${bgOffset.y}px)`,
+                    background: isThemeActive
+                      ? "linear-gradient(to bottom right, rgba(120, 53, 15, 0.6), rgba(124, 45, 18, 0.6))"
+                      : "linear-gradient(to bottom right, rgba(88, 28, 135, 0.6), rgba(107, 33, 168, 0.6))",
                   }}
                 />
 
@@ -237,11 +249,12 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
                   >
                     <div className="flex items-center gap-2">
                       <div
-                        className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-1000 ${
-                          isThemeActive
-                            ? "bg-gradient-to-br from-amber-500 to-orange-600"
-                            : "bg-gradient-to-br from-violet-500 to-purple-600"
-                        }`}
+                        className="w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-1000"
+                        style={{
+                          background: isThemeActive
+                            ? "linear-gradient(to bottom right, rgb(245, 158, 11), rgb(234, 88, 12))"
+                            : "linear-gradient(to bottom right, rgb(139, 92, 246), rgb(147, 51, 234))",
+                        }}
                       >
                         <span className="text-white text-lg">{isThemeActive ? "⚡" : "🌐"}</span>
                       </div>
@@ -270,15 +283,23 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
                       assemblyPhase === "complete"
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 translate-y-8"
-                    } ${isThemeActive ? "bg-gradient-to-b from-amber-950/20 to-transparent" : "bg-gradient-to-b from-violet-950/20 to-transparent"}`}
+                    }`}
+                    style={{
+                      background: isThemeActive
+                        ? "linear-gradient(to bottom, rgba(120, 53, 15, 0.2), transparent)"
+                        : "linear-gradient(to bottom, rgba(88, 28, 135, 0.2), transparent)",
+                    }}
                   >
                     <div className="text-center max-w-md mx-auto">
                       <h1
-                        className={`text-2xl md:text-3xl font-bold text-white mb-3 bg-clip-text text-transparent leading-tight transition-all duration-1000 ${
-                          isThemeActive
-                            ? "bg-gradient-to-r from-amber-300 via-orange-300 to-amber-300"
-                            : "bg-gradient-to-r from-violet-300 via-purple-300 to-violet-300"
-                        }`}
+                        className="text-2xl md:text-3xl font-bold text-white mb-3 bg-clip-text text-transparent leading-tight transition-all duration-1000"
+                        style={{
+                          backgroundImage: isThemeActive
+                            ? "linear-gradient(to right, rgb(252, 211, 77), rgb(251, 146, 60), rgb(252, 211, 77))"
+                            : "linear-gradient(to right, rgb(196, 181, 253), rgb(192, 132, 252), rgb(196, 181, 253))",
+                          WebkitBackgroundClip: "text",
+                          WebkitTextFillColor: "transparent",
+                        }}
                       >
                         {isThemeActive ? "Ihr Elektrofachbetrieb" : "Ihr Business Online"}
                       </h1>
@@ -289,11 +310,15 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
                       </p>
                       <div className="flex gap-3 justify-center">
                         <button
-                          className={`px-5 py-2.5 rounded-full text-white text-xs font-medium shadow-lg transition-all duration-1000 ${
-                            isThemeActive
-                              ? "bg-gradient-to-r from-amber-500 to-orange-600 shadow-amber-500/30 hover:shadow-amber-500/50"
-                              : "bg-gradient-to-r from-violet-500 to-purple-600 shadow-violet-500/30 hover:shadow-violet-500/50"
-                          }`}
+                          className="px-5 py-2.5 rounded-full text-white text-xs font-medium shadow-lg transition-all duration-1000"
+                          style={{
+                            background: isThemeActive
+                              ? "linear-gradient(to right, rgb(245, 158, 11), rgb(234, 88, 12))"
+                              : "linear-gradient(to right, rgb(139, 92, 246), rgb(147, 51, 234))",
+                            boxShadow: isThemeActive
+                              ? "0 10px 25px rgba(245, 158, 11, 0.3)"
+                              : "0 10px 25px rgba(139, 92, 246, 0.3)",
+                          }}
                         >
                           Jetzt anfragen
                         </button>

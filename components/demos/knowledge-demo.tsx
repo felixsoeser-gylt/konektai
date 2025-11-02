@@ -120,7 +120,13 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
                         style={{ backgroundColor: "rgba(139, 92, 246, 0.3)" }}
                       >
                         <div className="flex items-center gap-2 mb-2">
-                          <div className="w-6 h-6 rounded-full bg-gradient-to-br from-violet-500/30 to-purple-500/30 border border-violet-500/50 flex items-center justify-center text-xs">
+                          <div
+                            className="w-6 h-6 rounded-full border border-violet-500/50 flex items-center justify-center text-xs"
+                            style={{
+                              background:
+                                "linear-gradient(to bottom right, rgba(139, 92, 246, 0.3), rgba(168, 85, 247, 0.3))",
+                            }}
+                          >
                             🤖
                           </div>
                           <span className="text-xs text-white/70 font-light">KI Assistant</span>
@@ -180,7 +186,8 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
               <button
                 onClick={handleAsk}
                 disabled={isTyping || currentQA >= qaExamples.length - 1}
-                className="px-6 py-3 rounded-full bg-gradient-to-r from-violet-500 to-purple-500 text-white font-normal text-sm transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-6 py-3 rounded-full text-white font-normal text-sm transition-all duration-300 hover:shadow-lg hover:shadow-violet-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
+                style={{ background: "linear-gradient(to right, rgb(139, 92, 246), rgb(168, 85, 247))" }}
               >
                 {isTyping ? "..." : "Fragen"}
               </button>
@@ -243,8 +250,11 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
 
               {/* Central Node */}
               <div
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full bg-gradient-to-br from-violet-500/30 to-purple-500/30 border-2 border-violet-500/50 flex items-center justify-center shadow-lg shadow-violet-500/30 backdrop-blur-sm"
-                style={{ zIndex: 3 }}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 rounded-full border-2 border-violet-500/50 flex items-center justify-center shadow-lg shadow-violet-500/30 backdrop-blur-sm"
+                style={{
+                  zIndex: 3,
+                  background: "linear-gradient(to bottom right, rgba(139, 92, 246, 0.3), rgba(168, 85, 247, 0.3))",
+                }}
               >
                 <span className="text-white text-xs font-light text-center leading-tight">
                   Unternehmens-

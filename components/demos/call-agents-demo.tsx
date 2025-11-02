@@ -112,11 +112,26 @@ export function CallAgentsDemo({ isActive }: { isActive?: boolean }) {
           <div className="flex flex-col items-center gap-6">
             {/* 3D Agent Avatar */}
             <div className="relative w-full max-w-sm aspect-square">
-              <div className="absolute inset-0 bg-gradient-to-br from-violet-500/20 to-purple-500/20 rounded-full blur-3xl" />
-              <div className="relative w-full h-full rounded-full bg-gradient-to-br from-white/15 to-white/10 border border-white/20 backdrop-blur-xl flex items-center justify-center overflow-hidden">
+              <div
+                className="absolute inset-0 rounded-full blur-3xl"
+                style={{
+                  background: "linear-gradient(to bottom right, rgba(139, 92, 246, 0.2), rgba(168, 85, 247, 0.2))",
+                }}
+              />
+              <div
+                className="relative w-full h-full rounded-full border border-white/20 backdrop-blur-xl flex items-center justify-center overflow-hidden"
+                style={{
+                  background: "linear-gradient(to bottom right, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1))",
+                }}
+              >
                 {/* Agent silhouette with headset */}
                 <div className="relative">
-                  <div className="w-32 h-32 rounded-full bg-gradient-to-br from-violet-400/30 to-purple-400/30 border-2 border-white/30 flex items-center justify-center">
+                  <div
+                    className="w-32 h-32 rounded-full border-2 border-white/30 flex items-center justify-center"
+                    style={{
+                      background: "linear-gradient(to bottom right, rgba(167, 139, 250, 0.3), rgba(168, 85, 247, 0.3))",
+                    }}
+                  >
                     <div className="text-6xl">🎧</div>
                   </div>
                   {/* Sound waves */}
@@ -142,11 +157,12 @@ export function CallAgentsDemo({ isActive }: { isActive?: boolean }) {
                 {waveformHeights.map((height, i) => (
                   <div
                     key={i}
-                    className={`w-full rounded-full transition-all duration-150 ${
-                      isAnimating ? "bg-gradient-to-t from-violet-500 to-purple-400" : "bg-white/20"
-                    }`}
+                    className={`w-full rounded-full transition-all duration-150`}
                     style={{
                       height: `${height}%`,
+                      background: isAnimating
+                        ? "linear-gradient(to top, rgb(139, 92, 246), rgb(168, 85, 247))"
+                        : "rgba(255, 255, 255, 0.2)",
                     }}
                   />
                 ))}
