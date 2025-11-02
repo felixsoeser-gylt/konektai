@@ -82,7 +82,7 @@ export function CallAgentsDemo({ isActive }: { isActive?: boolean }) {
   return (
     <div className="backdrop-blur-md bg-black/20 border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden">
       {/* Glow effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-violet-500/10 via-transparent to-purple-500/10 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-violet-500/25 to-purple-500/25 pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto">
         {/* Header */}
