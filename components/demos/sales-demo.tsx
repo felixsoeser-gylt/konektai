@@ -3,9 +3,19 @@
 import { useState, useEffect } from "react"
 
 const funnelStages = [
-  { name: "Prospect", count: 0, target: 150, color: "from-violet-400 to-violet-500" },
-  { name: "Qualified", count: 0, target: 85, color: "from-purple-400 to-purple-500" },
-  { name: "Kunde", count: 0, target: 32, color: "from-pink-400 to-pink-500" },
+  {
+    name: "Prospect",
+    count: 0,
+    target: 150,
+    gradient: "linear-gradient(to right, rgb(167, 139, 250), rgb(139, 92, 246))",
+  },
+  {
+    name: "Qualified",
+    count: 0,
+    target: 85,
+    gradient: "linear-gradient(to right, rgb(192, 132, 252), rgb(168, 85, 247))",
+  },
+  { name: "Kunde", count: 0, target: 32, gradient: "linear-gradient(to right, rgb(244, 114, 182), rgb(236, 72, 153))" },
 ]
 
 const leads = [
@@ -117,7 +127,7 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
                       className="relative h-20 rounded-2xl border border-white/20 overflow-hidden transition-all duration-1000 shadow-lg"
                       style={{ width: `${width}%` }}
                     >
-                      <div className={`absolute inset-0 bg-gradient-to-r ${stage.color}`} />
+                      <div className="absolute inset-0" style={{ background: stage.gradient }} />
                       <div className="absolute inset-0 flex items-center justify-center">
                         <span className="text-white font-light text-2xl">{stage.count}</span>
                       </div>
