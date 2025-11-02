@@ -257,8 +257,10 @@ export default function ServicesSection() {
           </div>
 
           <div
-            className={`sticky top-0 z-30 transition-all duration-300 ${
-              isSticky ? "bg-black/80 backdrop-blur-xl py-4 -mx-6 px-6 shadow-lg shadow-violet-500/10" : "mb-8"
+            className={`sm:sticky sm:top-0 z-30 transition-all duration-300 mb-8 ${
+              isSticky
+                ? "sm:bg-black/80 sm:backdrop-blur-xl sm:py-4 sm:-mx-6 sm:px-6 sm:shadow-lg sm:shadow-violet-500/10"
+                : ""
             }`}
           >
             <div className="flex justify-center items-center">
