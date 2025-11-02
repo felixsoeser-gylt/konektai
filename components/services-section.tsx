@@ -16,28 +16,28 @@ const tabs = [
     component: CallAgentsDemo,
   },
   {
-    id: "webapps",
-    label: "Websites & Apps mit KI",
-    description: "Moderne Webanwendungen mit integrierten KI-Funktionen",
-    component: WebAppsDemo,
-  },
-  {
     id: "hr",
     label: "HR & Recruiting",
     description: "KI-gestützte Lösungen für effizientes Bewerbermanagement",
     component: HRDemo,
   },
   {
-    id: "sales",
-    label: "Vertrieb & Leadgenerierung",
-    description: "Automatisierte Prozesse zur Lead-Qualifizierung",
-    component: SalesDemo,
-  },
-  {
     id: "knowledge",
     label: "Wissensmanagement",
     description: "Intelligente Systeme zur Organisation Ihres Unternehmenswissens",
     component: KnowledgeDemo,
+  },
+  {
+    id: "webapps",
+    label: "Websites & Apps mit KI",
+    description: "Moderne Webanwendungen mit integrierten KI-Funktionen",
+    component: WebAppsDemo,
+  },
+  {
+    id: "sales",
+    label: "Vertrieb & Leadgenerierung",
+    description: "Automatisierte Prozesse zur Lead-Qualifizierung",
+    component: SalesDemo,
   },
 ]
 

@@ -17,6 +17,7 @@ export default function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [toastMessage, setToastMessage] = useState("")
   const [toastType, setToastType] = useState<"success" | "error">("success")
+  const [isButtonHovered, setIsButtonHovered] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -61,7 +62,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="kontakt" className="relative z-10 py-32 px-6">
+    <section id="kontakt" className="relative py-24 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Hero section */}
         <div className="text-center mb-16">
@@ -164,136 +165,126 @@ export default function ContactForm() {
           </div>
 
           {/* Contact Form */}
-          <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300">
-            <h3 className="text-2xl font-semibold text-white mb-6">Senden Sie uns eine Nachricht</h3>
+          <div className="relative max-w-2xl mx-auto px-6">
+            <div className="relative bg-black/40 backdrop-blur-xl rounded-2xl border border-white/10 p-8 shadow-2xl">
+              <h3 className="text-2xl font-semibold text-white mb-6">Senden Sie uns eine Nachricht</h3>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-              {/* Name */}
-              <div>
-                <label htmlFor="name" className="block text-white/80 mb-2 text-sm font-medium">
-                  Name *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all"
-                  placeholder="Ihr Name"
-                />
-              </div>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                {/* Name */}
+                <div>
+                  <label htmlFor="name" className="block text-white/80 mb-2 text-sm font-medium">
+                    Name *
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all"
+                    placeholder="Ihr Name"
+                  />
+                </div>
 
-              {/* Email */}
-              <div>
-                <label htmlFor="email" className="block text-white/80 mb-2 text-sm font-medium">
-                  E-Mail *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all"
-                  placeholder="ihre.email@beispiel.com"
-                />
-              </div>
+                {/* Email */}
+                <div>
+                  <label htmlFor="email" className="block text-white/80 mb-2 text-sm font-medium">
+                    E-Mail *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all"
+                    placeholder="ihre.email@beispiel.com"
+                  />
+                </div>
 
-              {/* Phone */}
-              <div>
-                <label htmlFor="phone" className="block text-white/80 mb-2 text-sm font-medium">
-                  Telefon
-                </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all"
-                  placeholder="+43 123 456 789"
-                />
-              </div>
+                {/* Phone */}
+                <div>
+                  <label htmlFor="phone" className="block text-white/80 mb-2 text-sm font-medium">
+                    Telefon
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all"
+                    placeholder="+43 123 456 789"
+                  />
+                </div>
 
-              {/* Subject */}
-              <div>
-                <label htmlFor="subject" className="block text-white/80 mb-2 text-sm font-medium">
-                  Betreff *
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all"
-                  placeholder="Worum geht es?"
-                />
-              </div>
+                {/* Subject */}
+                <div>
+                  <label htmlFor="subject" className="block text-white/80 mb-2 text-sm font-medium">
+                    Betreff *
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all"
+                    placeholder="Worum geht es?"
+                  />
+                </div>
 
-              {/* Message */}
-              <div>
-                <label htmlFor="message" className="block text-white/80 mb-2 text-sm font-medium">
-                  Nachricht *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={6}
-                  className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all resize-none"
-                  placeholder="Erzählen Sie uns von Ihrem Projekt..."
-                />
-              </div>
+                {/* Message */}
+                <div>
+                  <label htmlFor="message" className="block text-white/80 mb-2 text-sm font-medium">
+                    Nachricht *
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={6}
+                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all resize-none"
+                    placeholder="Erzählen Sie uns von Ihrem Projekt..."
+                  />
+                </div>
 
-              {/* Submit Button */}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-500 hover:to-purple-500 text-white rounded-lg font-medium transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-violet-500/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-              >
-                {isSubmitting ? (
-                  <>
-                    <svg
-                      className="animate-spin h-5 w-5"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <circle
-                        className="opacity-25"
-                        cx="12"
-                        cy="12"
-                        r="10"
-                        stroke="currentColor"
-                        strokeWidth="4"
-                      ></circle>
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      ></path>
-                    </svg>
-                    Wird gesendet...
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5" />
-                    Nachricht senden
-                  </>
-                )}
-              </button>
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  onMouseEnter={() => setIsButtonHovered(true)}
+                  onMouseLeave={() => setIsButtonHovered(false)}
+                  className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 text-white rounded-lg font-medium transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-violet-500/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                  style={{
+                    background: isButtonHovered
+                      ? "linear-gradient(to right, rgb(139, 92, 246), rgb(168, 85, 247))"
+                      : "linear-gradient(to right, rgb(124, 58, 237), rgb(147, 51, 234))",
+                  }}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      Wird gesendet...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5" />
+                      Nachricht senden
+                    </>
+                  )}
+                </button>
 
-              <p className="text-white/50 text-xs text-center">
-                * Pflichtfelder. Ihre Daten werden vertraulich behandelt.
-              </p>
-            </form>
+                <p className="text-white/50 text-xs text-center">
+                  * Pflichtfelder. Ihre Daten werden vertraulich behandelt.
+                </p>
+              </form>
+            </div>
           </div>
         </div>
       </div>
