@@ -7,7 +7,12 @@ export default function Footer() {
   return (
     <footer className="relative bg-black border-t border-white/10">
       {/* Glass morphism background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-violet-950/20 via-purple-950/10 to-black pointer-events-none" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom, rgba(46, 16, 101, 0.2), rgba(59, 7, 100, 0.1), rgba(0, 0, 0, 1))",
+        }}
+      />
 
       <div className="relative max-w-7xl mx-auto px-6 py-16">
         {/* Three column layout */}

@@ -163,9 +163,9 @@ export default function ServicesSection() {
             <ChevronDown className="w-6 h-6 text-white/60" />
           </div>
 
-          <div className="flex justify-center items-center w-full">
+          <div className="flex justify-center items-center w-full px-2 sm:px-4">
             <div
-              className="relative inline-flex gap-6 flex-wrap justify-center max-w-5xl"
+              className="relative inline-flex gap-2 sm:gap-3 md:gap-6 flex-wrap justify-center max-w-5xl"
               role="tablist"
               aria-label="Service categories"
             >
@@ -180,7 +180,8 @@ export default function ServicesSection() {
                   aria-controls={`panel-${tab.id}`}
                   onClick={() => handleTabClick(tab.id)}
                   className={`
-                    relative px-6 py-3 rounded-full text-sm font-light whitespace-nowrap
+                    relative px-3 py-2 sm:px-4 sm:py-2.5 md:px-6 md:py-3 rounded-full 
+                    text-xs sm:text-sm font-light whitespace-nowrap
                     transition-all duration-400 ease-out
                     backdrop-blur-md border
                     ${
@@ -259,12 +260,15 @@ export default function ServicesSection() {
               isSticky ? "bg-black/80 backdrop-blur-xl py-4 -mx-6 px-6 shadow-lg shadow-violet-500/10" : "mb-8"
             }`}
           >
-            {/* Centered container with larger gap */}
             <div className="flex justify-center items-center">
               <div
-                className="relative inline-flex gap-6 overflow-x-auto scrollbar-hide pb-2"
+                className="relative inline-flex gap-2 sm:gap-3 md:gap-6 overflow-x-auto scrollbar-hide pb-2 px-2 sm:px-0"
                 role="tablist"
                 aria-label="Service categories"
+                style={{
+                  maxWidth: "100%",
+                  WebkitOverflowScrolling: "touch",
+                }}
               >
                 {/* Optional: Neural network connecting lines */}
                 <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
@@ -277,9 +281,10 @@ export default function ServicesSection() {
                     aria-controls={`panel-${tab.id}`}
                     onClick={() => handleTabClick(tab.id)}
                     className={`
-                      relative px-6 py-3 rounded-full text-sm font-light whitespace-nowrap
+                      relative px-3 py-2 sm:px-4 sm:py-2.5 md:px-6 md:py-3 rounded-full 
+                      text-xs sm:text-sm font-light whitespace-nowrap
                       transition-all duration-400 ease-out
-                      backdrop-blur-md border
+                      backdrop-blur-md border flex-shrink-0
                       ${
                         activeTab === tab.id
                           ? "bg-white/10 text-white border-white/30 shadow-lg shadow-violet-500/30"
