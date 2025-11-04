@@ -1,6 +1,20 @@
 "use client"
 
+import { useState, useEffect } from "react"
+
 export default function AnimatedLogoBackground() {
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  useEffect(() => {
+    const img = new Image()
+    img.src = "/images/design-mode/Logo%20Text.png"
+    img.onload = () => {
+      setIsLoaded(true)
+    }
+  }, [])
+
+  if (!isLoaded) return null
+
   return (
     <div
       aria-hidden
