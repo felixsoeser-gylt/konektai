@@ -4,11 +4,10 @@ export default function AnimatedLogoBackground() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none fixed left-1/2 top-1/2 z-10"
+      className="pointer-events-none fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
       style={{
         animation: "floatLogo 10s ease-in-out infinite",
         willChange: "transform",
-        transform: "translate(-50%, -50%)",
       }}
     >
       <img
