@@ -1,9 +1,30 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 
 export default function DataStreamOrbit() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const [scrollOpacity, setScrollOpacity] = useState(1)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY
+      const fadeStart = 100 // Start fading after 100px
+      const fadeEnd = 300 // Fully transparent at 300px
+
+      if (scrollY <= fadeStart) {
+        setScrollOpacity(1)
+      } else if (scrollY >= fadeEnd) {
+        setScrollOpacity(0)
+      } else {
+        const opacity = 1 - (scrollY - fadeStart) / (fadeEnd - fadeStart)
+        setScrollOpacity(opacity)
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -111,7 +132,11 @@ export default function DataStreamOrbit() {
   return (
     <div
       className="pointer-events-none fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-0"
-      style={{ willChange: "transform" }}
+      style={{
+        willChange: "transform",
+        opacity: scrollOpacity,
+        transition: "opacity 0.1s ease-out",
+      }}
     >
       <canvas
         ref={canvasRef}

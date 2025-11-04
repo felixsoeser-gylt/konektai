@@ -34,6 +34,11 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
   useEffect(() => {
     if (isActive && currentQA === -1) {
       handleAsk()
+    } else if (!isActive) {
+      // Reset when tab becomes inactive
+      setCurrentQA(-1)
+      setInputValue("")
+      setActiveNodes([])
     }
   }, [isActive])
 
@@ -60,11 +65,11 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
     }
   }
 
-  const handleReset = () => {
-    setCurrentQA(-1)
-    setInputValue("")
-    setActiveNodes([])
-  }
+  // const handleReset = () => {
+  //   setCurrentQA(-1)
+  //   setInputValue("")
+  //   setActiveNodes([])
+  // }
 
   return (
     <div
@@ -192,15 +197,6 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
                 {isTyping ? "..." : "Fragen"}
               </button>
             </div>
-
-            {currentQA >= 0 && (
-              <button
-                onClick={handleReset}
-                className="w-full px-6 py-2 rounded-full bg-white/10 border border-white/20 text-white font-normal text-sm transition-all duration-300 hover:bg-white/20"
-              >
-                Chat zurücksetzen
-              </button>
-            )}
 
             {/* Badge */}
             <div className="flex justify-center">

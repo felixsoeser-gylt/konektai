@@ -41,6 +41,10 @@ export function HRDemo({ isActive }: { isActive?: boolean }) {
   useEffect(() => {
     if (isActive && !isAnimating) {
       handleStart()
+    } else if (!isActive) {
+      // Reset when tab becomes inactive
+      setIsAnimating(false)
+      setCurrentStages(stages.map((stage) => ({ ...stage, count: 0 })))
     }
   }, [isActive])
 
@@ -227,18 +231,6 @@ export function HRDemo({ isActive }: { isActive?: boolean }) {
                 </div>
               ))}
             </div>
-
-            {/* Control Buttons */}
-            {isAnimating && (
-              <div className="flex gap-3 pt-4">
-                <button
-                  onClick={handleReset}
-                  className="flex-1 px-6 py-3 rounded-full bg-white/10 border border-white/20 text-white font-normal text-sm transition-all duration-300 hover:bg-white/20"
-                >
-                  Zurücksetzen
-                </button>
-              </div>
-            )}
 
             {/* Stats */}
             <div className="grid grid-cols-2 gap-3 pt-4">

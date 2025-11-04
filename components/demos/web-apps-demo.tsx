@@ -18,6 +18,7 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
   const [isThemeActive, setIsThemeActive] = useState(false)
   const mockupRef = useRef<HTMLDivElement>(null)
   const [mousePosition, setMousePosition] = useState({ x: 0.5, y: 0.5 })
+  const animationTimeoutRef = useRef<NodeJS.Timeout[]>([])
 
   useEffect(() => {
     let rafId: number | null = null
@@ -46,44 +47,81 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
   useEffect(() => {
     if (!isBuilding) return
 
+    animationTimeoutRef.current.forEach((timeout) => clearTimeout(timeout))
+    animationTimeoutRef.current = []
+
     const sequence = async () => {
       // Base appears
       setAssemblyPhase("base")
-      await new Promise((resolve) => setTimeout(resolve, 150))
+      await new Promise((resolve) => {
+        const timeout = setTimeout(resolve, 150)
+        animationTimeoutRef.current.push(timeout)
+      })
 
       // Nav appears
       setAssemblyPhase("nav")
       setActiveStep(0)
-      await new Promise((resolve) => setTimeout(resolve, 150))
+      await new Promise((resolve) => {
+        const timeout = setTimeout(resolve, 150)
+        animationTimeoutRef.current.push(timeout)
+      })
 
       // Hero appears
       setAssemblyPhase("hero")
       setActiveStep(1)
-      await new Promise((resolve) => setTimeout(resolve, 150))
+      await new Promise((resolve) => {
+        const timeout = setTimeout(resolve, 150)
+        animationTimeoutRef.current.push(timeout)
+      })
 
       // Cards appear
       setAssemblyPhase("cards")
       setActiveStep(2)
-      await new Promise((resolve) => setTimeout(resolve, 150))
+      await new Promise((resolve) => {
+        const timeout = setTimeout(resolve, 150)
+        animationTimeoutRef.current.push(timeout)
+      })
 
       // Start rotation
       setActiveStep(3)
       setAssemblyPhase("rotating")
       setIsThemeActive(true)
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      await new Promise((resolve) => {
+        const timeout = setTimeout(resolve, 1000)
+        animationTimeoutRef.current.push(timeout)
+      })
 
       // Complete
       setAssemblyPhase("complete")
     }
 
     sequence()
+
+    return () => {
+      animationTimeoutRef.current.forEach((timeout) => clearTimeout(timeout))
+      animationTimeoutRef.current = []
+    }
   }, [isBuilding])
 
   useEffect(() => {
-    if (isActive && !isBuilding) {
-      handleStart()
+    if (!isActive) {
+      // Clear all ongoing timeouts
+      animationTimeoutRef.current.forEach((timeout) => clearTimeout(timeout))
+      animationTimeoutRef.current = []
+
+      setIsBuilding(false)
+      setActiveStep(0)
+      setAssemblyPhase("idle")
+      setIsThemeActive(false)
     }
   }, [isActive])
+
+  useEffect(() => {
+    if (isActive && !isBuilding && assemblyPhase === "idle") {
+      setAssemblyPhase("base")
+      setIsBuilding(true)
+    }
+  }, [isActive, isBuilding, assemblyPhase])
 
   const handleStart = () => {
     setIsBuilding(true)
@@ -191,12 +229,7 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
                 className="relative w-full h-full transition-transform duration-1000 ease-out"
                 style={{
                   transformStyle: "preserve-3d",
-                  transform:
-                    assemblyPhase === "rotating" || assemblyPhase === "complete"
-                      ? "rotateY(0deg)"
-                      : assemblyPhase === "idle"
-                        ? "rotateY(30deg)"
-                        : "rotateY(30deg)",
+                  transform: assemblyPhase === "idle" ? "rotateY(30deg)" : "rotateY(0deg)",
                 }}
               >
                 {/* Background Layer (deepest) - Shadow/Depth */}

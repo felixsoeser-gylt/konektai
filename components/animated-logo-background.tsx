@@ -4,6 +4,7 @@ import { useState, useEffect } from "react"
 
 export default function AnimatedLogoBackground() {
   const [isLoaded, setIsLoaded] = useState(false)
+  const [scrollOpacity, setScrollOpacity] = useState(1)
 
   useEffect(() => {
     const img = new Image()
@@ -11,6 +12,26 @@ export default function AnimatedLogoBackground() {
     img.onload = () => {
       setIsLoaded(true)
     }
+  }, [])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY
+      const fadeStart = 100 // Start fading after 100px
+      const fadeEnd = 300 // Fully transparent at 300px
+
+      if (scrollY <= fadeStart) {
+        setScrollOpacity(1)
+      } else if (scrollY >= fadeEnd) {
+        setScrollOpacity(0)
+      } else {
+        const opacity = 1 - (scrollY - fadeStart) / (fadeEnd - fadeStart)
+        setScrollOpacity(opacity)
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   if (!isLoaded) return null
@@ -22,6 +43,8 @@ export default function AnimatedLogoBackground() {
       style={{
         animation: "floatLogo 10s ease-in-out infinite",
         willChange: "transform",
+        opacity: scrollOpacity,
+        transition: "opacity 0.1s ease-out",
       }}
     >
       <img

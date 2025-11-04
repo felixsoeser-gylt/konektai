@@ -6,17 +6,17 @@ const transcript = [
   { speaker: "Kunde", text: "Guten Tag, ich hätte gerne einen Beratungstermin." },
   {
     speaker: "AI Agent",
-    text: "Guten Tag! Sehr gerne, ich helfe Ihnen direkt weiter. Welcher Zeitraum würde Ihnen am besten passen?",
+    text: "Guten Tag! Gerne. Welcher Zeitraum passt Ihnen?",
   },
   { speaker: "Kunde", text: "Nächste Woche Dienstag oder Mittwoch wäre ideal." },
   {
     speaker: "AI Agent",
-    text: "Perfekt! Ich schaue gleich nach verfügbaren Terminen für Sie.",
+    text: "Am Dienstag um 10:00 Uhr hätte ich einen Termin frei. Passt das?",
   },
-  { speaker: "Kunde", text: "Gibt es auch Termine am Vormittag?" },
+  { speaker: "Kunde", text: "Ja, perfekt!" },
   {
     speaker: "AI Agent",
-    text: "Ja, ich habe für Sie am Dienstag um 10:00 Uhr einen Termin reserviert. Sie erhalten gleich eine Bestätigung per E-Mail.",
+    text: "Sehr gut! Ich habe den Termin für Sie reserviert. Sie erhalten eine Bestätigung per E-Mail.",
   },
 ]
 
@@ -205,6 +205,11 @@ export function CallAgentsDemo({ isActive }: { isActive?: boolean }) {
                   </div>
                 )}
                 {currentLine >= 5 && (
+                  <div className="px-4 py-2 rounded-full text-xs font-light border bg-violet-500/20 border-violet-500/40 text-white shadow-lg shadow-violet-500/20 animate-in fade-in">
+                    ✓ Terminangebot gestellt
+                  </div>
+                )}
+                {currentLine >= 7 && (
                   <div className="px-4 py-2 rounded-full text-xs font-light border bg-violet-500/20 border-violet-500/40 text-white shadow-lg shadow-violet-500/20 animate-in fade-in">
                     ✓ Termin gebucht
                   </div>

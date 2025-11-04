@@ -1,11 +1,11 @@
 "use client"
 
 import Link from "next/link"
-import { Mail, MapPin, Linkedin } from "lucide-react"
+import { Mail, MapPin, Instagram } from "lucide-react"
 
 export default function Footer() {
   return (
-    <footer className="relative bg-black border-t border-white/10">
+    <footer className="relative z-50 bg-black border-t border-white/10">
       {/* Glass morphism background */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -90,14 +90,14 @@ export default function Footer() {
             <h3 className="text-white font-semibold text-lg mb-6">Kontakt & Social</h3>
             <nav className="flex flex-col space-y-3">
               <a
-                href="https://linkedin.com/company/konektai"
+                href="https://www.instagram.com/konektai/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/80 hover:text-white transition-all duration-300 hover:translate-x-1 inline-flex items-center gap-2 group"
               >
-                <Linkedin className="w-4 h-4" />
+                <Instagram className="w-4 h-4" />
                 <span className="relative">
-                  LinkedIn
+                  Instagram
                   <span className="absolute inset-0 blur-md bg-violet-400/0 group-hover:bg-violet-400/30 transition-all duration-300 -z-10" />
                 </span>
               </a>

@@ -166,7 +166,7 @@ export default function ContactForm() {
 
           {/* Contact Form */}
           <div className="relative max-w-2xl mx-auto px-6">
-            <div className="relative bg-black/40 backdrop-blur-xl rounded-2xl border border-white/10 p-8 shadow-2xl">
+            <div className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300">
               <h3 className="text-2xl font-semibold text-white mb-6">Senden Sie uns eine Nachricht</h3>
 
               <form onSubmit={handleSubmit} className="space-y-6">

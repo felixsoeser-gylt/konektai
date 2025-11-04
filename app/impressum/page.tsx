@@ -2,8 +2,13 @@
 
 import Link from "next/link"
 import { ArrowLeft } from "lucide-react"
+import { useEffect } from "react"
 
 export default function ImpressumPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
   return (
     <div className="min-h-screen bg-black">
       {/* Background gradient */}
@@ -29,8 +34,8 @@ export default function ImpressumPage() {
           <section className="space-y-4">
             <h2 className="text-2xl font-semibold text-white">Angaben gemäß § 5 TMG</h2>
             <div className="text-white/80 space-y-2">
-              <p className="font-semibold text-white">KonektAI e.U.  </p>
-              <p>Andreas-Hofer-Gasse 31 / 3  </p>
+              <p className="font-semibold text-white">KonektAI e.U. </p>
+              <p>Andreas-Hofer-Gasse 31 / 3 </p>
               <p>4800 Attnang-Puchheim </p>
             </div>
           </section>
@@ -44,14 +49,11 @@ export default function ImpressumPage() {
             <h2 className="text-2xl font-semibold text-white">Kontakt</h2>
             <div className="text-white/80 space-y-2">
               <p>E-Mail: soeser@konektai.at</p>
-              <p>Telefon: +43 680 4412871  </p>
+              <p>Telefon: +43 680 4412871 </p>
             </div>
           </section>
 
-          <section className="space-y-4">
-            
-            
-          </section>
+          <section className="space-y-4">{/* Additional section can be added here if needed */}</section>
 
           <section className="space-y-4">
             <h2 className="text-2xl font-semibold text-white">Aufsichtsbehörde</h2>

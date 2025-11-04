@@ -32,6 +32,11 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
   useEffect(() => {
     if (isActive && !isAnimating) {
       handleStart()
+    } else if (!isActive) {
+      // Reset when tab becomes inactive
+      setIsAnimating(false)
+      setCurrentStages(funnelStages.map((stage) => ({ ...stage, count: 0 })))
+      setActiveLeadIndex(0)
     }
   }, [isActive])
 
@@ -75,11 +80,11 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
     setIsAnimating(true)
   }
 
-  const handleReset = () => {
-    setIsAnimating(false)
-    setCurrentStages(funnelStages.map((stage) => ({ ...stage, count: 0 })))
-    setActiveLeadIndex(0)
-  }
+  // const handleReset = () => {
+  //   setIsAnimating(false)
+  //   setCurrentStages(funnelStages.map((stage) => ({ ...stage, count: 0 })))
+  //   setActiveLeadIndex(0)
+  // }
 
   return (
     <div
@@ -148,16 +153,6 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
             </div>
 
             {/* Control Buttons */}
-            {isAnimating && (
-              <div className="flex gap-3 pt-4">
-                <button
-                  onClick={handleReset}
-                  className="flex-1 px-6 py-3 rounded-full bg-white/10 border border-white/20 text-white font-normal text-sm transition-all duration-300 hover:bg-white/20"
-                >
-                  Zurücksetzen
-                </button>
-              </div>
-            )}
 
             {/* AI Badge */}
             <div className="flex justify-center pt-2">
