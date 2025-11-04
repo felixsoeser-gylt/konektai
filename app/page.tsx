@@ -8,6 +8,7 @@ import ServicesSection from "@/components/services-section"
 import ContactForm from "@/components/contact-form"
 import Footer from "@/components/footer"
 import AnimatedLogoBackground from "@/components/animated-logo-background"
+import DataStreamOrbit from "@/components/data-stream-orbit"
 
 export default function ShaderShowcase() {
   return (
@@ -15,6 +16,7 @@ export default function ShaderShowcase() {
       <ShaderBackground>
         <Header />
         <div className="min-h-screen relative">
+          <DataStreamOrbit />
           <AnimatedLogoBackground />
           <HeroContent />
           <PulsingCircle />
