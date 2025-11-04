@@ -62,7 +62,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="kontakt" className="relative py-24 overflow-hidden">
+    <section id="kontakt" className="relative z-50 bg-black py-24 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         {/* Hero section */}
         <div className="text-center mb-16">

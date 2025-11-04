@@ -15,8 +15,12 @@ export default function Header() {
     <header className="sticky top-0 z-50 flex items-center justify-between p-6 backdrop-blur-sm bg-black/20">
       {/* Logo */}
       <div className="flex items-center gap-3">
-        <img src="/images/design-mode/Logo%20white(1).png" alt="KonektAI" className="h-12 w-auto" />
-        <img src="/images/design-mode/Logo%20Text(1).png" alt="KonektAI Text" className="w-auto font-medium h-12" />
+        <img src="/images/design-mode/Logo%20white(1).png" alt="KonektAI" className="h-8 md:h-12 w-auto" />
+        <img
+          src="/images/design-mode/Logo%20Text(1).png"
+          alt="KonektAI Text"
+          className="w-auto font-medium h-8 md:h-12"
+        />
       </div>
 
       <div className="flex-1" />

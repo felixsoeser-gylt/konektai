@@ -102,7 +102,7 @@ export default function ServicesSection() {
   const ActiveComponent = activeTab ? tabs.find((tab) => tab.id === activeTab)?.component : null
 
   return (
-    <section id="leistungen" className="relative z-10 px-6 py-32 max-w-7xl mx-auto">
+    <section id="leistungen" className="relative z-50 px-6 py-32 max-w-7xl mx-auto bg-black">
       {showIntro && (
         <div
           ref={introRef}
