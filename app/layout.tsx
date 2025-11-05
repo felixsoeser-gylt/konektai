@@ -24,43 +24,46 @@ const instrumentSerif = Instrument_Serif({
 })
 
 export const metadata: Metadata = {
-  title: "KonektAI – Zukunftssichere KI-Integration für Unternehmen",
+  title: "WirVerstehenAI – und wir verstehen, was Unternehmen wirklich brauchen.",
   description:
-    "KonektAI macht Unternehmen effizienter mit moderner KI-Automatisierung und smarten Strategien für nachhaltigen Erfolg.",
+    "WirVerstehenAI hilft Unternehmen, künstliche Intelligenz sinnvoll einzusetzen. Wir bieten maßgeschneiderte KI-Integration für Automatisierung, Digitalisierung und nachhaltige Effizienz – damit Ihr Unternehmen zukunftssicher wird.",
   keywords: [
     "KI-Integration",
     "Künstliche Intelligenz",
-    "KI-Automatisierung",
-    "Business AI",
-    "Prozessoptimierung",
+    "Automatisierung",
+    "Digitalisierung",
+    "Effizienz",
+    "Unternehmen",
+    "Zukunftssicherheit",
     "KI-Lösungen",
+    "Prozessoptimierung",
   ],
-  authors: [{ name: "KonektAI" }],
-  creator: "KonektAI",
-  publisher: "KonektAI",
+  authors: [{ name: "WirVerstehenAI" }],
+  creator: "WirVerstehenAI",
+  publisher: "WirVerstehenAI",
   robots: "index, follow",
   openGraph: {
     type: "website",
     locale: "de_DE",
     url: "https://konektai.com",
-    siteName: "KonektAI",
-    title: "KonektAI – AI that drives your business forward",
+    siteName: "WirVerstehenAI",
+    title: "WirVerstehenAI – Künstliche Intelligenz für zukunftssichere Unternehmen",
     description:
-      "Wir verbinden Intelligenz und Effizienz: KonektAI entwickelt KI-Lösungen, die Prozesse optimieren und Unternehmen zukunftsfähig machen.",
+      "Wir verstehen, was Unternehmen wirklich brauchen: Intelligente KI-Integration für Automatisierung, Effizienz und nachhaltiges Wachstum. WirVerstehenAI macht Ihr Unternehmen fit für die digitale Zukunft.",
     images: [
       {
         url: "/images/design-mode/Logo%20white(1).png",
         width: 1200,
         height: 630,
-        alt: "KonektAI Logo",
+        alt: "WirVerstehenAI Logo",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "KonektAI – AI that drives your business forward",
+    title: "WirVerstehenAI – Künstliche Intelligenz für zukunftssichere Unternehmen",
     description:
-      "Wir verbinden Intelligenz und Effizienz: KonektAI entwickelt KI-Lösungen, die Prozesse optimieren und Unternehmen zukunftsfähig machen.",
+      "Wir verstehen, was Unternehmen wirklich brauchen: Intelligente KI-Integration für Automatisierung, Effizienz und nachhaltiges Wachstum.",
     images: ["/images/design-mode/Logo%20white(1).png"],
   },
   metadataBase: new URL("https://konektai.com"),
