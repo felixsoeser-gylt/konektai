@@ -96,14 +96,13 @@ export function CallAgentsDemo({ isActive }: { isActive?: boolean }) {
         {/* Header */}
         <div className="text-center mb-12">
           <h3 className="text-3xl md:text-4xl font-light text-white mb-4">
-            KI{" "}
+            {" "}
             <span className="font-medium italic" style={{ fontFamily: "'Instrument Serif', serif" }}>
-              Call Agents
+              KI Call Agents
             </span>
           </h3>
           <p className="text-white/70 text-sm md:text-base font-light max-w-3xl mx-auto leading-relaxed">
-            Unsere KI Call Agents beantworten Anrufe automatisch, rund um die Uhr. Sie verstehen Anliegen, terminieren
-            Gespräche und entlasten Ihr Team – ganz ohne Warteschleife.
+            {"Unsere KI Call Agents beantworten Anrufe automatisch – rund um die Uhr oder genau dann, wenn Sie es wünschen.\nOb außerhalb der Geschäftszeiten, bei besetzter Leitung oder als erste Anlaufstelle: die KI versteht Anliegen, vereinbart Termine und leitet Gespräche gezielt weiter."}
           </p>
         </div>
 

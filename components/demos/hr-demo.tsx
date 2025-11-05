@@ -102,14 +102,14 @@ export function HRDemo({ isActive }: { isActive?: boolean }) {
         {/* Header */}
         <div className="text-center mb-12">
           <h3 className="text-3xl md:text-4xl font-light text-white mb-4">
-            HR & Recruiting{" "}
             <span className="font-medium italic" style={{ fontFamily: "'Instrument Serif', serif" }}>
-              mit KI
+              HR & Recruiting
             </span>
           </h3>
           <p className="text-white/70 text-sm md:text-base font-light max-w-3xl mx-auto leading-relaxed">
-            Unsere KI-Lösungen unterstützen das Recruiting von der Bewerberauswahl bis zum Onboarding. Sie analysieren
-            Lebensläufe, vergleichen Kompetenzen und schlagen ideale Kandidaten objektiv vor.
+            {
+              "Unsere KI-HR- & Recruiting-Lösungen optimieren den gesamten Bewerbungsprozess – von der Vorauswahl bis zum Onboarding.\nSie analysieren Lebensläufe, gleichen Kompetenzen ab und identifizieren objektiv die passenden Kandidat*innen."
+            }
           </p>
         </div>
 

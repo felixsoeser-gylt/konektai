@@ -103,14 +103,13 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
         {/* Header */}
         <div className="text-center mb-12">
           <h3 className="text-3xl md:text-4xl font-light text-white mb-4">
-            Vertrieb &{" "}
+            {" "}
             <span className="font-medium italic" style={{ fontFamily: "'Instrument Serif', serif" }}>
-              Leadgenerierung
+              Vertrieb &amp; Leadgenerierung
             </span>
           </h3>
           <p className="text-white/70 text-sm md:text-base font-light max-w-3xl mx-auto leading-relaxed">
-            KIntegration automatisiert Ihre Vertriebsprozesse – von der Lead-Analyse über die Kontaktaufnahme bis zur
-            Nachverfolgung. KI erkennt Potenziale und sorgt dafür, dass kein Kunde verloren geht.
+            {"Unsere KI-Integrationen für Vertrieb und Sales automatisieren den gesamten Prozess – von der Lead-Analyse über die Kontaktaufnahme bis hin zur Nachverfolgung.\nDie KI erkennt Verkaufschancen frühzeitig, priorisiert Potenziale und unterstützt Ihr Team dabei, Kund*innen gezielt anzusprechen.\nSo geht kein Lead verloren und jeder Kontakt wird zum messbaren Fortschritt."}
           </p>
         </div>
 

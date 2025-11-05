@@ -93,8 +93,7 @@ export function KnowledgeDemo({ isActive }: { isActive?: boolean }) {
             </span>
           </h3>
           <p className="text-white/70 text-sm md:text-base font-light max-w-3xl mx-auto leading-relaxed">
-            Unser KI-Wissensmanagement vernetzt Ihr Unternehmenswissen. Dokumente, FAQs und interne Daten werden sofort
-            durchsuchbar – Ihre Teams finden Antworten in Sekunden.
+            {"Unser KI-Wissensmanagement verbindet das gesamte Wissen Ihres Unternehmens zu einem intelligenten System.\nDokumente, FAQs und interne Daten werden in Echtzeit durchsuchbar – so finden Ihre Teams Antworten, Informationen und Zusammenhänge innerhalb von Sekunden.\nWissen wird nicht mehr gesucht, sondern genutzt."}
           </p>
         </div>
 

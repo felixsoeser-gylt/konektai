@@ -156,10 +156,10 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
       <div className="relative z-10 max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-8 md:mb-12">
-          <h3 className="text-2xl sm:text-3xl md:text-4xl font-light text-white mb-3 md:mb-4">
-            Websites & Apps{" "}
+          <h3 className="text-3xl md:text-4xl font-light text-white mb-4">
+            {" "}
             <span className="font-medium italic" style={{ fontFamily: "'Instrument Serif', serif" }}>
-              mit KI gebaut
+              Websites &amp; Apps
             </span>
           </h3>
           <p className="text-white/70 text-xs sm:text-sm md:text-base font-light max-w-3xl mx-auto leading-relaxed px-2">
