@@ -3,7 +3,7 @@
 import { useEffect } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
-import { ArrowLeft, Target, Users, Lightbulb, Award } from "lucide-react"
+import { ArrowLeft, Target, Lightbulb, Award } from "lucide-react"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 
@@ -71,31 +71,15 @@ export default function UeberUnsClientPage() {
               </div>
               <div>
                 <h2 className="text-2xl font-semibold text-white mb-3">Unsere Mission</h2>
-                <p className="text-white/80 leading-relaxed">
-                  Bei KonektAI glauben wir daran, dass künstliche Intelligenz nicht nur ein Werkzeug, sondern ein
-                  strategischer Partner für Unternehmen sein sollte. Unsere Mission ist es, maßgeschneiderte KI-Lösungen
-                  zu entwickeln, die echten Mehrwert schaffen und Geschäftsprozesse nachhaltig transformieren.
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* Team */}
-          <section className="backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-8 hover:bg-white/10 transition-all duration-300">
-            <div className="flex items-start gap-4 mb-4">
-              <div className="p-3 rounded-lg bg-purple-500/20 border border-purple-500/30">
-                <Users className="w-6 h-6 text-purple-400" />
-              </div>
-              <div>
-                <h2 className="text-2xl font-semibold text-white mb-3">Unser Team</h2>
                 <p className="text-white/80 leading-relaxed mb-4">
-                  Wir sind ein interdisziplinäres Team aus KI-Experten, Softwareentwicklern und Unternehmensberatern mit
-                  Sitz in Wien. Unsere Expertise erstreckt sich über Machine Learning, Natural Language Processing,
-                  Computer Vision und moderne Webentwicklung.
+                  KonektAI steht für eine neue Art, mit künstlicher Intelligenz zu arbeiten.
+                </p>
+                <p className="text-white/80 leading-relaxed mb-4">
+                  Wir glauben, dass KI mehr ist als Technologie – sie ist der Schlüssel zu smarteren Entscheidungen,
+                  automatisierten Prozessen und nachhaltigem Wachstum.
                 </p>
                 <p className="text-white/80 leading-relaxed">
-                  Jedes Teammitglied bringt jahrelange Erfahrung in der Entwicklung und Implementierung von KI-Lösungen
-                  für Unternehmen verschiedenster Branchen mit.
+                  Wir machen Unternehmen nicht nur effizienter, sondern fit für die Zukunft.
                 </p>
               </div>
             </div>
@@ -111,8 +95,8 @@ export default function UeberUnsClientPage() {
                 <h2 className="text-2xl font-semibold text-white mb-3">Innovation & Technologie</h2>
                 <p className="text-white/80 leading-relaxed mb-4">
                   Wir setzen auf modernste Technologien und bleiben stets am Puls der Zeit. Von Large Language Models
-                  über Computer Vision bis hin zu Predictive Analytics – wir beherrschen das gesamte Spektrum der
-                  KI-Technologien.
+                  über Computer Vision bis hin zu Predictive Analytics – wir decken den größten Teil des
+                  KI-Technologiespektrums ab.
                 </p>
                 <p className="text-white/80 leading-relaxed">
                   Unsere Lösungen sind nicht nur technologisch fortschrittlich, sondern auch praktisch umsetzbar und auf

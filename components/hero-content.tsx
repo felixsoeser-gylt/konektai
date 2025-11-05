@@ -25,7 +25,7 @@ export default function HeroContent() {
         {/* Description */}
         <p className="font-light text-white/70 mb-4 sm:mb-6 leading-relaxed text-xs sm:text-sm">
           {
-            "Wir verbinden Unternehmen mit intelligenter Technologie.\nDurch nahtlose KI-Integration automatisieren wir Prozesse, optimieren Kommunikation und schaffen neue Effizienz – präzise, sicher und auf Ihre Ziele abgestimmt."
+            "KonektAI steht für eine neue Art, mit künstlicher Intelligenz zu arbeiten.\n\nWir glauben, dass KI mehr ist als Technologie – sie ist der Schlüssel zu smarteren Entscheidungen, automatisierten Prozessen und nachhaltigem Wachstum.\n\nWir machen Unternehmen nicht nur effizienter, sondern fit für die Zukunft."
           }
         </p>
 
