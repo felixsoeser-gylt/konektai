@@ -44,10 +44,10 @@ export default function DatenschutzPage() {
           <section className="space-y-3 sm:space-y-4">
             <h2 className="text-xl sm:text-2xl font-semibold text-white">2. Verantwortlicher Anbieter</h2>
             <div className="text-white/80 text-sm sm:text-base space-y-2 leading-relaxed">
-              <p className="font-semibold text-white">KonektAI e. U. </p>
+              <p className="font-semibold text-white">WirVerstehenAI e. U.   </p>
               <p>Andreas-Hofer-Gasse 31 </p>
               <p>4800 Attnang-Puchheim, Österreich</p>
-              <p className="mt-4">E-Mail: soeser@konektai.at </p>
+              <p className="mt-4">E-Mail: soeser@wirverstehen.ai </p>
               <p>Telefon: +43 680 4412871 </p>
             </div>
           </section>
@@ -128,7 +128,7 @@ export default function DatenschutzPage() {
               Für Fragen zum Datenschutz oder zur Ausübung Ihrer Rechte wenden Sie sich bitte an:
             </p>
             <div className="text-white/80 text-sm sm:text-base space-y-2 leading-relaxed">
-              <p>E-Mail: soeser@konektai.at</p>
+              <p>E-Mail: soeser@wirverstehen.ai</p>
               <p>Telefon: +43 680 4412871 </p>
             </div>
           </section>

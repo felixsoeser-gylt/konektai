@@ -18,9 +18,21 @@ export default function ContactForm() {
   const [toastMessage, setToastMessage] = useState("")
   const [toastType, setToastType] = useState<"success" | "error">("success")
   const [isButtonHovered, setIsButtonHovered] = useState(false)
+  const [emailError, setEmailError] = useState("")
+
+  const validateEmail = (email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    return emailRegex.test(email)
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    if (!validateEmail(formData.email)) {
+      setEmailError("Bitte geben Sie eine gültige E-Mail-Adresse ein")
+      return
+    }
+
     setIsSubmitting(true)
 
     try {
@@ -59,6 +71,16 @@ export default function ContactForm() {
       ...prev,
       [name]: value,
     }))
+
+    if (name === "email") {
+      setEmailError("")
+    }
+  }
+
+  const handleEmailBlur = () => {
+    if (formData.email && !validateEmail(formData.email)) {
+      setEmailError("Bitte geben Sie eine gültige E-Mail-Adresse ein")
+    }
   }
 
   return (
@@ -102,7 +124,7 @@ export default function ContactForm() {
                   <div>
                     <h4 className="text-white font-medium mb-1">E-Mail</h4>
                     <a href="mailto:hello@konekt.ai" className="text-white/70 hover:text-violet-400 transition-colors">
-                      soeser@konektai.at
+                      soeser@wirverstehen.ai
                     </a>
                   </div>
                 </div>
@@ -198,10 +220,24 @@ export default function ContactForm() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
+                    onBlur={handleEmailBlur}
                     required
-                    className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 transition-all"
+                    className={`w-full px-4 py-3 bg-white/5 border ${emailError ? "border-red-500/50" : "border-white/10"} rounded-lg text-white placeholder-white/40 focus:outline-none focus:ring-2 ${emailError ? "focus:ring-red-500/50 focus:border-red-500/50" : "focus:ring-violet-500/50 focus:border-violet-500/50"} transition-all`}
                     placeholder="ihre.email@beispiel.com"
                   />
+                  {emailError && (
+                    <p className="mt-2 text-red-400 text-sm flex items-center gap-1">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                        />
+                      </svg>
+                      {emailError}
+                    </p>
+                  )}
                 </div>
 
                 {/* Phone */}

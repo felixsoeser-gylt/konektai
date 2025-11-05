@@ -25,6 +25,12 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Name, E-Mail und Nachricht sind erforderlich" }, { status: 400 })
     }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(email)) {
+      console.error("[v0] Validation failed: invalid email format")
+      return NextResponse.json({ error: "Bitte geben Sie eine gültige E-Mail-Adresse ein" }, { status: 400 })
+    }
+
     console.log("[v0] Attempting to send email via Resend...")
 
     // Send email using Resend

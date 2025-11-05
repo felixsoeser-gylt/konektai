@@ -53,7 +53,7 @@ export default function UeberUnsClientPage() {
                 color: "rgb(192, 132, 252)",
               }}
             >
-              KonektAI
+              WirVerstehenAI
             </span>
           </h1>
           <p className="text-white/80 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed">
@@ -72,14 +72,13 @@ export default function UeberUnsClientPage() {
               <div>
                 <h2 className="text-2xl font-semibold text-white mb-3">Unsere Mission</h2>
                 <p className="text-white/80 leading-relaxed mb-4">
-                  KonektAI steht für eine neue Art, mit künstlicher Intelligenz zu arbeiten.
+                   WirVerstehenAI steht für eine neue Art, mit künstlicher Intelligenz zu arbeiten.
                 </p>
                 <p className="text-white/80 leading-relaxed mb-4">
-                  Wir glauben, dass KI mehr ist als Technologie – sie ist der Schlüssel zu smarteren Entscheidungen,
-                  automatisierten Prozessen und nachhaltigem Wachstum.
+                  {"Unsere Mission ist es, Technologie verständlich, zugänglich und nutzbar zu machen.\nWir zeigen, dass KI nicht nur für Konzerne funktioniert, sondern auch für kleine und mittlere Unternehmen, die Prozesse optimieren, Daten besser nutzen und Zeit sparen wollen.\nDabei steht immer der Mensch im Mittelpunkt: Wir entwickeln Lösungen, die unterstützen statt ersetzen, vereinfachen statt verkomplizieren und Vertrauen schaffen statt Unsicherheit."}
                 </p>
                 <p className="text-white/80 leading-relaxed">
-                  Wir machen Unternehmen nicht nur effizienter, sondern fit für die Zukunft.
+                  Wir machen KI greifbar – und Unternehmen bereit für die Zukunft.
                 </p>
               </div>
             </div>

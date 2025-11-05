@@ -31,13 +31,13 @@ export default function Header() {
         <nav className="hidden md:flex items-center space-x-2">
           <a
             href="#leistungen"
-            className="text-white/80 hover:text-white text-xs font-light px-3 py-2 rounded-full hover:bg-white/10 transition-all duration-200"
+            className="text-white/80 hover:text-white text-sm font-light px-4 py-2.5 rounded-full hover:bg-white/10 transition-all duration-200"
           >
             Leistungen
           </a>
           <button
             onClick={handleContactClick}
-            className="text-white/80 hover:text-white text-xs font-light px-3 py-2 rounded-full hover:bg-white/10 transition-all duration-200 cursor-pointer"
+            className="text-white/80 hover:text-white text-sm font-light px-4 py-2.5 rounded-full hover:bg-white/10 transition-all duration-200 cursor-pointer"
           >
             Kontakt
           </button>

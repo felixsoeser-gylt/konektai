@@ -19,15 +19,19 @@ export default function HeroContent() {
         <h1 className="text-3xl sm:text-4xl md:text-5xl md:leading-16 tracking-tight font-light text-white mb-3 sm:mb-4 ml-0">
           <span className="font-medium italic instrument leading-tight sm:leading-3">KI Integration für KMU`s </span>
           <br />
-          <span className="font-light tracking-tight text-white">We connect you! </span>
+          <span className="font-light tracking-tight text-white leading-tight text-xl sm:text-2xl md:text-3xl">
+            AI that understands your needs!{" "}
+          </span>
         </h1>
 
         {/* Description */}
-        <p className="font-light text-white/70 mb-4 sm:mb-6 leading-relaxed text-xs sm:text-sm">
-          {
-            "KonektAI steht für eine neue Art, mit künstlicher Intelligenz zu arbeiten.\n\nWir glauben, dass KI mehr ist als Technologie – sie ist der Schlüssel zu smarteren Entscheidungen, automatisierten Prozessen und nachhaltigem Wachstum.\n\nWir machen Unternehmen nicht nur effizienter, sondern fit für die Zukunft."
-          }
-        </p>
+        <div className="font-light text-white/70 mb-4 sm:mb-6 leading-relaxed text-xs sm:text-sm space-y-3">
+          <p className="text-pretty">WirVerstehenAI – und wir verstehen, was ihr Unternehmen wirklich braucht!</p>
+          <p className="text-pretty">
+            Wir glauben, dass KI mehr ist, als nur mit ChatGPT zu schreiben – sie ist der Schlüssel zu smarteren Entscheidungen, automatisierten Prozessen und nachhaltigem Wachstum.
+          </p>
+          <p className="text-pretty">Wir machen Unternehmen nicht nur effizienter, sondern fit für die Zukunft!</p>
+        </div>
 
         {/* Buttons */}
         <div className="flex items-center gap-3 sm:gap-4 flex-wrap">

@@ -107,7 +107,7 @@ export default function Footer() {
               >
                 <Mail className="w-4 h-4" />
                 <span className="relative">
-                  soeser@konektai.at
+                  soeser@wirverstehen.ai
                   <span className="absolute inset-0 blur-md bg-violet-400/0 group-hover:bg-violet-400/30 transition-all duration-300 -z-10" />
                 </span>
               </a>
@@ -121,7 +121,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="pt-8 border-t border-white/10 text-center">
-          <p className="text-white/60 text-sm">© 2025 KonektAI – All rights reserved.</p>
+          <p className="text-white/60 text-sm">© 2025 WirVerstehenAI – All rights reserved.</p>
         </div>
       </div>
     </footer>

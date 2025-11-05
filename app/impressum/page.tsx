@@ -34,7 +34,7 @@ export default function ImpressumPage() {
           <section className="space-y-4">
             <h2 className="text-2xl font-semibold text-white">Angaben gemäß § 5 TMG</h2>
             <div className="text-white/80 space-y-2">
-              <p className="font-semibold text-white">KonektAI e.U. </p>
+              <p className="font-semibold text-white">WirVerstehenAI e. U.     </p>
               <p>Andreas-Hofer-Gasse 31 / 3 </p>
               <p>4800 Attnang-Puchheim </p>
             </div>
@@ -48,7 +48,7 @@ export default function ImpressumPage() {
           <section className="space-y-4">
             <h2 className="text-2xl font-semibold text-white">Kontakt</h2>
             <div className="text-white/80 space-y-2">
-              <p>E-Mail: soeser@konektai.at</p>
+              <p>E-Mail: soeser@wirverstehen.ai</p>
               <p>Telefon: +43 680 4412871 </p>
             </div>
           </section>
