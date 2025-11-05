@@ -30,7 +30,7 @@ export async function POST(request: Request) {
     // Send email using Resend
     const { data, error } = await resend.emails.send({
       from: "KonektAI Kontaktformular <onboarding@resend.dev>",
-      to: ["soeser@konektai.at"], // Changed recipient to business email now that domain is verified
+      to: ["soeser@wirverstehen.ai"], // Updated recipient email to new domain
       replyTo: email,
       subject: `Neue Kontaktanfrage: ${subject || "Keine Betreffzeile"}`,
       html: `
