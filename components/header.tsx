@@ -22,12 +22,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 flex items-center justify-between p-6 backdrop-blur-sm bg-black/20">
       {/* Logo */}
       <Link href="/" className="flex items-center gap-3 cursor-pointer">
-        <img src="/images/design-mode/Logo%20white(1).png" alt="KonektAI" className="h-8 md:h-12 w-auto" />
-        <img
-          src="/images/design-mode/Logo%20Text(1).png"
-          alt="KonektAI Text"
-          className="w-auto font-medium h-8 md:h-12"
-        />
+        <img src="/images/wir-verstehen-ai-logo.png" alt="Wir Verstehen AI" className="h-8 md:h-12 w-auto opacity-80" />
       </Link>
 
       <div className="flex-1" />

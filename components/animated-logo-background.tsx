@@ -8,7 +8,7 @@ export default function AnimatedLogoBackground() {
 
   useEffect(() => {
     const img = new Image()
-    img.src = "/images/design-mode/Logo%20Text.png"
+    img.src = "/images/geometric-head-logo.png"
     img.onload = () => {
       setIsLoaded(true)
     }
@@ -48,7 +48,7 @@ export default function AnimatedLogoBackground() {
       }}
     >
       <img
-        src="/images/design-mode/Logo%20Text.png"
+        src="/images/geometric-head-logo.png"
         alt=""
         style={{
           width: "auto",
