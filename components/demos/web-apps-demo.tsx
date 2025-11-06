@@ -450,31 +450,39 @@ export function WebAppsDemo({ isActive }: { isActive?: boolean }) {
                 />
               </div>
             </div>
+          </div>
 
-            {/* Explanation Text */}
-            <div className="mt-4 sm:mt-6 md:mt-8 text-center px-2">
-              <p className="text-white/70 text-[11px] sm:text-xs md:text-sm font-light leading-relaxed mb-3 sm:mb-4">
-                {isThemeActive
-                  ? "So könnte die fertige Website für einen Elektrofachbetrieb aussehen – professionell und vollständig durch KI erstellt."
-                  : "Sehen Sie, wie KI eine professionelle Website für Ihr Business erstellt – vom Design bis zur Funktionalität."}
-              </p>
+          {/* Mobile Button - Bottom of page */}
+          <div className="md:hidden order-3 col-span-1 flex justify-center mt-6">
+            <a
+              href="#kontakt"
+              onClick={(e) => {
+                e.preventDefault()
+                const kontaktSection = document.getElementById("kontakt")
+                if (kontaktSection) {
+                  kontaktSection.scrollIntoView({ behavior: "smooth", block: "start" })
+                }
+              }}
+              className="inline-block px-8 py-3 rounded-full bg-white text-black font-normal text-sm transition-all duration-300 hover:bg-white/90 hover:shadow-lg"
+            >
+              Jetzt KI integrieren!
+            </a>
+          </div>
 
-              <div className="flex justify-center">
-                <a
-                  href="#kontakt"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    const kontaktSection = document.getElementById("kontakt")
-                    if (kontaktSection) {
-                      kontaktSection.scrollIntoView({ behavior: "smooth", block: "start" })
-                    }
-                  }}
-                  className="inline-block px-8 py-3 rounded-full bg-white text-black font-normal text-sm transition-all duration-300 hover:bg-white/90 hover:shadow-lg"
-                >
-                  Jetzt KI integrieren!
-                </a>
-              </div>
-            </div>
+          <div className="hidden md:flex order-3 col-span-2 justify-center mt-8">
+            <a
+              href="#kontakt"
+              onClick={(e) => {
+                e.preventDefault()
+                const kontaktSection = document.getElementById("kontakt")
+                if (kontaktSection) {
+                  kontaktSection.scrollIntoView({ behavior: "smooth", block: "start" })
+                }
+              }}
+              className="inline-block px-8 py-3 rounded-full bg-white text-black font-normal text-sm transition-all duration-300 hover:bg-white/90 hover:shadow-lg"
+            >
+              Jetzt KI integrieren!
+            </a>
           </div>
         </div>
       </div>

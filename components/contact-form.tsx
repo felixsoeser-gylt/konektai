@@ -123,7 +123,10 @@ export default function ContactForm() {
                   </div>
                   <div>
                     <h4 className="text-white font-medium mb-1">E-Mail</h4>
-                    <a href="mailto:hello@konekt.ai" className="text-white/70 hover:text-violet-400 transition-colors">
+                    <a
+                      href="mailto:soeser@wirverstehen.ai"
+                      className="text-white/70 hover:text-violet-400 transition-colors"
+                    >
                       soeser@wirverstehen.ai
                     </a>
                   </div>

@@ -107,7 +107,7 @@ export default function Footer() {
               >
                 <Mail className="w-4 h-4" />
                 <span className="relative">
-                  soeser@wirverstehen.ai
+                  hello@konekt.ai
                   <span className="absolute inset-0 blur-md bg-violet-400/0 group-hover:bg-violet-400/30 transition-all duration-300 -z-10" />
                 </span>
               </a>
