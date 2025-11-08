@@ -102,12 +102,12 @@ export default function Footer() {
                 </span>
               </a>
               <a
-                href="mailto:hello@konekt.ai"
+                href="mailto:soeser@wirverstehen.ai"
                 className="text-white/80 hover:text-white transition-all duration-300 hover:translate-x-1 inline-flex items-center gap-2 group"
               >
                 <Mail className="w-4 h-4" />
                 <span className="relative">
-                  hello@konekt.ai
+                  soeser@wirverstehen.ai
                   <span className="absolute inset-0 blur-md bg-violet-400/0 group-hover:bg-violet-400/30 transition-all duration-300 -z-10" />
                 </span>
               </a>

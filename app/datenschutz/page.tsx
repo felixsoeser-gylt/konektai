@@ -44,7 +44,7 @@ export default function DatenschutzPage() {
           <section className="space-y-3 sm:space-y-4">
             <h2 className="text-xl sm:text-2xl font-semibold text-white">2. Verantwortlicher Anbieter</h2>
             <div className="text-white/80 text-sm sm:text-base space-y-2 leading-relaxed">
-              <p className="font-semibold text-white">WirVerstehenAI e. U.   </p>
+              <p className="font-semibold text-white">WirVerstehenAI e. U. </p>
               <p>Andreas-Hofer-Gasse 31 </p>
               <p>4800 Attnang-Puchheim, Österreich</p>
               <p className="mt-4">E-Mail: soeser@wirverstehen.ai </p>
@@ -70,17 +70,15 @@ export default function DatenschutzPage() {
                 <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Wie erfassen wir Ihre Daten?</h3>
                 <p className="text-white/80 text-sm sm:text-base leading-relaxed">
                   Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z.B.
-                  um Daten handeln, die Sie in ein Kontaktformular eingeben. Andere Daten werden automatisch beim Besuch
-                  der Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z.B.
-                  Internetbrowser, Betriebssystem oder Uhrzeit des Seitenaufrufs).
+                  um Daten handeln, die Sie in unser Kontaktformular eingeben (Name, E-Mail-Adresse, Nachricht).
                 </p>
               </div>
 
               <div>
                 <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Wofür nutzen wir Ihre Daten?</h3>
                 <p className="text-white/80 text-sm sm:text-base leading-relaxed">
-                  Ein Teil der Daten wird erhoben, um eine fehlerfreie Bereitstellung der Website zu gewährleisten.
-                  Andere Daten können zur Analyse Ihres Nutzerverhaltens verwendet werden.
+                  Die über das Kontaktformular übermittelten Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage
+                  verwendet. Wir verwenden keine Tracking- oder Analyse-Tools und erstellen keine Nutzerprofile.
                 </p>
               </div>
             </div>
@@ -89,26 +87,40 @@ export default function DatenschutzPage() {
           <section className="space-y-3 sm:space-y-4">
             <h2 className="text-xl sm:text-2xl font-semibold text-white">4. Cookies</h2>
             <p className="text-white/80 text-sm sm:text-base leading-relaxed">
-              Unsere Website verwendet Cookies. Das sind kleine Textdateien, die Ihr Webbrowser auf Ihrem Endgerät
-              speichert. Cookies helfen uns dabei, unser Angebot nutzerfreundlicher, effektiver und sicherer zu machen.
-              Einige Cookies sind "Session-Cookies." Solche Cookies werden nach Ende Ihrer Browser-Sitzung von selbst
-              gelöscht. Andere Cookies bleiben auf Ihrem Endgerät gespeichert, bis Sie diese selbst löschen.
+              Unsere Website verwendet ein einziges funktionales Cookie namens "sidebar_state", das ausschließlich dazu
+              dient, Ihre Präferenz bezüglich der Sidebar-Ansicht zu speichern. Dieses Cookie wird für 7 Tage auf Ihrem
+              Gerät gespeichert und enthält keine personenbezogenen Daten. Es dient ausschließlich der Verbesserung
+              Ihrer Nutzererfahrung.
+            </p>
+            <p className="text-white/80 text-sm sm:text-base leading-relaxed mt-2">
+              Wir verwenden keine Marketing-, Tracking- oder Analyse-Cookies. Sie können Cookies in Ihren
+              Browser-Einstellungen jederzeit löschen oder blockieren.
             </p>
           </section>
 
           <section className="space-y-3 sm:space-y-4">
-            <h2 className="text-xl sm:text-2xl font-semibold text-white">
-              5. Analyse-Tools und Tools von Drittanbietern
-            </h2>
+            <h2 className="text-xl sm:text-2xl font-semibold text-white">5. Kontaktformular und E-Mail-Versand</h2>
             <p className="text-white/80 text-sm sm:text-base leading-relaxed">
-              Beim Besuch unserer Website kann Ihr Surf-Verhalten statistisch ausgewertet werden. Das geschieht vor
-              allem mit Cookies und mit sogenannten Analyseprogrammen. Die Analyse Ihres Surf-Verhaltens erfolgt in der
-              Regel anonym; das Surf-Verhalten kann nicht zu Ihnen zurückverfolgt werden.
+              Wenn Sie uns über das Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben (Name, E-Mail-Adresse,
+              Nachricht) zur Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert.
+            </p>
+            <p className="text-white/80 text-sm sm:text-base leading-relaxed mt-2">
+              Für den E-Mail-Versand nutzen wir den Dienst Resend. Ihre Daten werden dabei verschlüsselt übertragen. Die
+              Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet und nicht an Dritte weitergegeben.
             </p>
           </section>
 
           <section className="space-y-3 sm:space-y-4">
-            <h2 className="text-xl sm:text-2xl font-semibold text-white">6. Ihre Rechte</h2>
+            <h2 className="text-xl sm:text-2xl font-semibold text-white">6. Analyse-Tools und Tracking</h2>
+            <p className="text-white/80 text-sm sm:text-base leading-relaxed">
+              Wir verwenden auf dieser Website bewusst keine Analyse-Tools, Tracking-Software oder andere Dienste zur
+              statistischen Auswertung Ihres Nutzerverhaltens. Es werden keine Nutzerprofile erstellt und keine Daten zu
+              Analysezwecken gesammelt oder an Dritte weitergegeben.
+            </p>
+          </section>
+
+          <section className="space-y-3 sm:space-y-4">
+            <h2 className="text-xl sm:text-2xl font-semibold text-white">7. Ihre Rechte</h2>
             <div className="text-white/80 text-sm sm:text-base space-y-2 leading-relaxed">
               <p>Sie haben jederzeit das Recht:</p>
               <ul className="list-disc list-inside space-y-2 ml-2 sm:ml-4">
@@ -123,7 +135,7 @@ export default function DatenschutzPage() {
           </section>
 
           <section className="space-y-3 sm:space-y-4">
-            <h2 className="text-xl sm:text-2xl font-semibold text-white">7. Kontakt für Datenschutzanfragen</h2>
+            <h2 className="text-xl sm:text-2xl font-semibold text-white">8. Kontakt für Datenschutzanfragen</h2>
             <p className="text-white/80 text-sm sm:text-base leading-relaxed">
               Für Fragen zum Datenschutz oder zur Ausübung Ihrer Rechte wenden Sie sich bitte an:
             </p>
@@ -135,7 +147,7 @@ export default function DatenschutzPage() {
 
           <section className="space-y-3 sm:space-y-4">
             <h2 className="text-xl sm:text-2xl font-semibold text-white">
-              8. Beschwerderecht bei der Aufsichtsbehörde
+              9. Beschwerderecht bei der Aufsichtsbehörde
             </h2>
             <p className="text-white/80 text-sm sm:text-base leading-relaxed">
               Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde über die Verarbeitung Ihrer

@@ -57,15 +57,15 @@ export default function AGBPage() {
           </section>
 
           <section className="space-y-3 sm:space-y-4">
-            <h2 className="text-xl sm:text-2xl font-semibold text-white">3. Leistungen von KonektAI</h2>
+            <h2 className="text-xl sm:text-2xl font-semibold text-white">3. Leistungen von WirVerstehenAI </h2>
             <div className="text-sm sm:text-base text-white/80 space-y-2 leading-relaxed">
               <p>Der Anbieter erbringt folgende Dienstleistungen:</p>
               <ul className="list-disc list-inside space-y-2 ml-2 sm:ml-4">
                 <li>Entwicklung und Implementierung von KI-gestützten Call Agents</li>
-                <li>Erstellung von Websites und Webanwendungen mit KI-Integration</li>
+                <li>Erstellung von Websites und Webanwendungen mit KI</li>
                 <li>HR & Recruiting-Lösungen mit künstlicher Intelligenz</li>
-                <li>Vertrieb & Leadgenerierungs-Systeme</li>
-                <li>Wissensmanagement-Plattformen</li>
+                <li>Vertrieb &amp; Leadgenerierungs-Systeme mit KI  </li>
+                <li>Wissensmanagement-Plattformen mit KI  </li>
                 <li>Beratung und Support im Bereich künstliche Intelligenz</li>
               </ul>
               <p className="mt-4">
