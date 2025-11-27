@@ -90,7 +90,7 @@ export default function Footer() {
             <h3 className="text-white font-semibold text-lg mb-6">Kontakt & Social</h3>
             <nav className="flex flex-col space-y-3">
               <a
-                href="https://www.instagram.com/konektai/"
+                href="https://www.instagram.com/wirverstehen_ai?igsh=a2R4YzFnOG9wb3A%3D&utm_source=qr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/80 hover:text-white transition-all duration-300 hover:translate-x-1 inline-flex items-center gap-2 group"

@@ -1,33 +1,39 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import { Mail, FileText, FolderOpen, Table } from "lucide-react"
 
-const funnelStages = [
-  {
-    name: "Prospect",
-    count: 0,
-    target: 150,
-    gradient: "linear-gradient(to right, rgb(167, 139, 250), rgb(139, 92, 246))",
-  },
-  {
-    name: "Qualified",
-    count: 0,
-    target: 85,
-    gradient: "linear-gradient(to right, rgb(192, 132, 252), rgb(168, 85, 247))",
-  },
-  { name: "Kunde", count: 0, target: 32, gradient: "linear-gradient(to right, rgb(244, 114, 182), rgb(236, 72, 153))" },
-]
+interface Email {
+  id: number
+  from: string
+  subject: string
+  x: number
+  y: number
+  processed: boolean
+}
 
-const leads = [
-  { name: "TechCorp GmbH", score: 92, action: "Follow-up Call", priority: "Hoch", potential: "€125k" },
-  { name: "Digital Solutions AG", score: 78, action: "Proposal senden", priority: "Mittel", potential: "€78k" },
-  { name: "Innovation Labs", score: 65, action: "Demo vereinbaren", priority: "Mittel", potential: "€45k" },
-]
+interface Invoice {
+  id: number
+  number: string
+  amount: string
+  date: string
+  status: "processing" | "completed"
+  x: number
+  y: number
+}
 
 export function SalesDemo({ isActive }: { isActive?: boolean }) {
   const [isAnimating, setIsAnimating] = useState(false)
-  const [currentStages, setCurrentStages] = useState(funnelStages)
-  const [activeLeadIndex, setActiveLeadIndex] = useState(0)
+  const [emails, setEmails] = useState<Email[]>([])
+  const [invoices, setInvoices] = useState<Invoice[]>([])
+  const [tableEntries, setTableEntries] = useState<any[]>([])
+  const [currentStep, setCurrentStep] = useState(0)
+
+  const emailData = [
+    { from: "kunde@firma.de", subject: "Rechnung #2024-001" },
+    { from: "lieferant@shop.com", subject: "RE: Bestellung #4532" },
+    { from: "service@provider.at", subject: "Invoice March 2024" },
+  ]
 
   useEffect(() => {
     if (isActive && !isAnimating) {
@@ -35,56 +41,97 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
     } else if (!isActive) {
       // Reset when tab becomes inactive
       setIsAnimating(false)
-      setCurrentStages(funnelStages.map((stage) => ({ ...stage, count: 0 })))
-      setActiveLeadIndex(0)
+      setEmails([])
+      setInvoices([])
+      setTableEntries([])
+      setCurrentStep(0)
     }
   }, [isActive])
 
   useEffect(() => {
     if (!isAnimating) return
 
-    const duration = 2500
-    const steps = 60
-    const interval = duration / steps
+    // Step 1: Show emails (0-2s)
+    const emailTimer = setTimeout(() => {
+      const newEmails = emailData.map((data, i) => ({
+        id: i,
+        ...data,
+        x: 20,
+        y: 20 + i * 80,
+        processed: false,
+      }))
+      setEmails(newEmails)
+      setCurrentStep(1)
+    }, 500)
 
-    let currentStep = 0
-    const timer = setInterval(() => {
-      currentStep++
-      const progress = currentStep / steps
+    // Step 2: Process emails to invoices (2-4s)
+    const processTimer = setTimeout(() => {
+      setCurrentStep(2)
+      emailData.forEach((data, i) => {
+        setTimeout(() => {
+          setEmails((prev) => prev.map((email) => (email.id === i ? { ...email, processed: true } : email)))
 
-      setCurrentStages(
-        funnelStages.map((stage) => ({
-          ...stage,
-          count: Math.floor(stage.target * progress),
-        })),
-      )
-
-      if (currentStep >= steps) {
-        clearInterval(timer)
-        setCurrentStages(funnelStages.map((stage) => ({ ...stage, count: stage.target })))
-      }
-    }, interval)
-
-    // Cycle through leads
-    const leadInterval = setInterval(() => {
-      setActiveLeadIndex((prev) => (prev + 1) % leads.length)
+          setTimeout(() => {
+            const invoice = {
+              id: i,
+              number: `2024-${String(i + 1).padStart(3, "0")}`,
+              amount: `€${(Math.random() * 1000 + 500).toFixed(2)}`,
+              date: new Date().toLocaleDateString("de-DE"),
+              status: "processing" as const,
+              x: 50,
+              y: 20 + i * 80,
+            }
+            setInvoices((prev) => [...prev, invoice])
+          }, 300)
+        }, i * 800)
+      })
     }, 2000)
 
+    // Step 3: Move to folder (4-5s)
+    const folderTimer = setTimeout(() => {
+      setCurrentStep(3)
+      setInvoices((prev) => prev.map((inv) => ({ ...inv, x: 75, status: "completed" as const })))
+    }, 4500)
+
+    // Step 4: Trigger table population (5-7s)
+    const tableTimer = setTimeout(() => {
+      setCurrentStep(4)
+    }, 5500)
+
     return () => {
-      clearInterval(timer)
-      clearInterval(leadInterval)
+      clearTimeout(emailTimer)
+      clearTimeout(processTimer)
+      clearTimeout(folderTimer)
+      clearTimeout(tableTimer)
     }
   }, [isAnimating])
 
+  useEffect(() => {
+    if (currentStep === 4 && invoices.length > 0 && tableEntries.length === 0) {
+      invoices.forEach((inv, i) => {
+        setTimeout(() => {
+          setTableEntries((prevEntries) => [
+            ...prevEntries,
+            {
+              id: inv.id,
+              number: inv.number,
+              amount: inv.amount,
+              date: inv.date,
+              category: "Eingang",
+            },
+          ])
+        }, i * 600)
+      })
+    }
+  }, [currentStep, invoices.length])
+
   const handleStart = () => {
     setIsAnimating(true)
+    setEmails([])
+    setInvoices([])
+    setTableEntries([])
+    setCurrentStep(0)
   }
-
-  // const handleReset = () => {
-  //   setIsAnimating(false)
-  //   setCurrentStages(funnelStages.map((stage) => ({ ...stage, count: 0 })))
-  //   setActiveLeadIndex(0)
-  // }
 
   return (
     <div
@@ -103,141 +150,154 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
         {/* Header */}
         <div className="text-center mb-12">
           <h3 className="text-3xl md:text-4xl font-light text-white mb-4">
-            {" "}
             <span className="font-medium italic" style={{ fontFamily: "'Instrument Serif', serif" }}>
-              Vertrieb &amp; Leadgenerierung
+              Büro-Automatisierungen
             </span>
           </h3>
           <p className="text-white/70 text-sm md:text-base font-light max-w-3xl mx-auto leading-relaxed">
-            {"Unsere KI-Integrationen für Vertrieb und Sales automatisieren den gesamten Prozess – von der Lead-Analyse über die Kontaktaufnahme bis hin zur Nachverfolgung.\nDie KI erkennt Verkaufschancen frühzeitig, priorisiert Potenziale und unterstützt Ihr Team dabei, Kund*innen gezielt anzusprechen.\nSo geht kein Lead verloren und jeder Kontakt wird zum messbaren Fortschritt."}
+            Büro-Automatisierung bedeutet: KI übernimmt deine nervigsten Routineaufgaben.
+            <br />
+            Weniger Klicks, weniger Fehler, mehr Zeit für Umsatz.
+            <br />
+            Du machst das Wichtige — KI erledigt den Rest.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Left: Sales Funnel */}
-          <div className="space-y-6">
-            <h4 className="text-xl font-light text-white mb-4">Sales Funnel</h4>
-
-            <div className="space-y-4">
-              {currentStages.map((stage, i) => {
-                const width = 100 - i * 25
-                return (
-                  <div key={i} className="space-y-2">
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-white font-light">{stage.name}</span>
-                      <span className="text-white/70 font-light">{stage.count} Leads</span>
-                    </div>
-                    <div
-                      className="relative h-20 rounded-2xl border border-white/20 overflow-hidden transition-all duration-1000 shadow-lg"
-                      style={{ width: `${width}%` }}
-                    >
-                      <div className="absolute inset-0" style={{ background: stage.gradient }} />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-white font-light text-2xl">{stage.count}</span>
+        {/* Animation Area */}
+        <div className="min-h-[600px] relative mb-8">
+          {/* Email Inbox */}
+          <div className="absolute left-0 top-0 w-1/4">
+            <div className="p-4 rounded-xl border border-white/20 bg-white/5">
+              <div className="flex items-center gap-2 mb-4">
+                <Mail className="w-5 h-5 text-violet-400" />
+                <h4 className="text-white font-light text-sm">Posteingang</h4>
+              </div>
+              <div className="space-y-2">
+                {emails.map((email) => (
+                  <div
+                    key={email.id}
+                    className={`p-3 rounded-lg border transition-all duration-500 ${
+                      email.processed ? "border-green-500/40 bg-green-500/10 opacity-50" : "border-white/20 bg-white/10"
+                    }`}
+                  >
+                    <div className="flex items-start gap-2">
+                      <Mail className="w-4 h-4 text-white/70 flex-shrink-0 mt-0.5" />
+                      <div className="min-w-0 flex-1">
+                        <p className="text-xs text-white/90 font-light truncate">{email.from}</p>
+                        <p className="text-xs text-white/60 truncate">{email.subject}</p>
                       </div>
-                      {/* Animated particles */}
-                      {isAnimating && stage.count > 0 && (
-                        <>
-                          <div className="absolute top-2 left-4 w-2 h-2 rounded-full bg-white/50 animate-ping" />
-                          <div
-                            className="absolute bottom-2 right-4 w-2 h-2 rounded-full bg-white/50 animate-ping"
-                            style={{ animationDelay: "0.5s" }}
-                          />
-                        </>
-                      )}
                     </div>
+                    {email.processed && (
+                      <div className="mt-2 text-xs text-green-400 flex items-center gap-1">
+                        <span>✓</span> Verarbeitet
+                      </div>
+                    )}
                   </div>
-                )
-              })}
-            </div>
-
-            {/* Control Buttons */}
-
-            {/* AI Badge */}
-            <div className="flex justify-center pt-2">
-              <div className="px-4 py-2 rounded-full bg-violet-500/20 border border-violet-500/40 text-white text-xs font-light shadow-lg shadow-violet-500/20">
-                ✓ KI-Priorisierung aktiv
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Right: Lead Dashboard */}
-          <div className="space-y-4">
-            <h4 className="text-xl font-light text-white mb-4">Prioritäre Leads</h4>
-
-            <div className="space-y-3">
-              {leads.map((lead, i) => (
-                <div
-                  key={i}
-                  className={`p-5 rounded-2xl border transition-all duration-500 ${
-                    isAnimating && i === activeLeadIndex
-                      ? "border-violet-500/40 scale-[1.02] shadow-lg shadow-violet-500/20"
-                      : "border-white/20"
-                  }`}
-                  style={{
-                    backgroundColor:
-                      isAnimating && i === activeLeadIndex ? "rgba(139, 92, 246, 0.3)" : "rgba(255, 255, 255, 0.2)",
-                  }}
-                >
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex-1">
-                      <h5 className="text-base font-light text-white mb-1">{lead.name}</h5>
-                      <p className="text-xs text-white/70 mb-2">Nächste Aktion: {lead.action}</p>
-                      <p className="text-sm text-violet-400 font-light">Potenzial: {lead.potential}</p>
-                    </div>
-                    <div
-                      className={`px-3 py-1 rounded-full text-xs font-light ${
-                        lead.priority === "Hoch"
-                          ? "bg-rose-500/20 border border-rose-500/40 text-rose-300"
-                          : "bg-amber-500/20 border border-amber-500/40 text-amber-300"
-                      }`}
-                    >
-                      {lead.priority}
-                    </div>
-                  </div>
-
-                  {/* Score Bar */}
-                  <div className="space-y-1">
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-white/70">Lead Score</span>
-                      <span className="text-violet-400 font-light">{lead.score}%</span>
-                    </div>
-                    <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                      <div
-                        className="h-full rounded-full transition-all duration-1000"
-                        style={{
-                          width: `${lead.score}%`,
-                          background: "linear-gradient(to right, rgb(139, 92, 246), rgb(168, 85, 247))",
-                        }}
-                      />
-                    </div>
-                  </div>
-                </div>
-              ))}
+          {/* AI Processing Indicator */}
+          {currentStep >= 2 && currentStep < 4 && (
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+              <div className="px-6 py-3 rounded-full bg-violet-500/30 border border-violet-500/50 text-white text-sm font-light shadow-lg shadow-violet-500/30 animate-pulse">
+                <span className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-violet-400 animate-ping" />
+                  KI verarbeitet...
+                </span>
+              </div>
             </div>
+          )}
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-3 pt-4">
-              {[
-                { label: "Conversion", value: "21%" },
-                { label: "Avg. Deal", value: "€83k" },
-                { label: "Pipeline", value: "€2.8M" },
-              ].map((stat, i) => (
-                <div
-                  key={i}
-                  className="p-4 rounded-2xl border border-white/20 text-center"
-                  style={{ backgroundColor: "rgba(255, 255, 255, 0.2)" }}
-                >
-                  <div className="text-lg font-light text-violet-400 mb-1">{stat.value}</div>
-                  <div className="text-xs text-white/70">{stat.label}</div>
-                </div>
-              ))}
+          {/* Invoice Folder */}
+          <div className="absolute right-0 top-0 w-1/4">
+            <div className="p-4 rounded-xl border border-white/20 bg-white/5">
+              <div className="flex items-center gap-2 mb-4">
+                <FolderOpen className="w-5 h-5 text-violet-400" />
+                <h4 className="text-white font-light text-sm">Rechnungen</h4>
+              </div>
+              <div className="space-y-2">
+                {invoices.map((invoice) => (
+                  <div
+                    key={invoice.id}
+                    className={`p-3 rounded-lg border transition-all duration-500 ${
+                      invoice.status === "completed"
+                        ? "border-violet-500/40 bg-violet-500/10"
+                        : "border-white/20 bg-white/10"
+                    }`}
+                  >
+                    <div className="flex items-start gap-2">
+                      <FileText className="w-4 h-4 text-violet-400 flex-shrink-0 mt-0.5" />
+                      <div className="min-w-0 flex-1">
+                        <p className="text-xs text-white/90 font-light">{invoice.number}</p>
+                        <p className="text-xs text-violet-400">{invoice.amount}</p>
+                        <p className="text-xs text-white/60">{invoice.date}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Data Table */}
+          <div className="absolute bottom-0 left-0 right-0 mt-8">
+            <div className="p-4 rounded-xl border border-white/20 bg-white/5">
+              <div className="flex items-center gap-2 mb-4">
+                <Table className="w-5 h-5 text-violet-400" />
+                <h4 className="text-white font-light text-sm">Buchhaltungs-Tabelle</h4>
+              </div>
+              <div className="overflow-hidden">
+                <table className="w-full text-xs">
+                  <thead>
+                    <tr className="border-b border-white/10">
+                      <th className="text-left text-white/70 font-light py-2 px-3">Rechnungsnr.</th>
+                      <th className="text-left text-white/70 font-light py-2 px-3">Betrag</th>
+                      <th className="text-left text-white/70 font-light py-2 px-3">Datum</th>
+                      <th className="text-left text-white/70 font-light py-2 px-3">Kategorie</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {tableEntries.map((entry, i) => (
+                      <tr
+                        key={entry.id}
+                        className="border-b border-white/5 animate-fadeIn"
+                        style={{ animationDelay: `${i * 0.2}s` }}
+                      >
+                        <td className="text-white/90 font-light py-2 px-3">{entry.number}</td>
+                        <td className="text-violet-400 font-light py-2 px-3">{entry.amount}</td>
+                        <td className="text-white/70 font-light py-2 px-3">{entry.date}</td>
+                        <td className="text-white/70 font-light py-2 px-3">{entry.category}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
 
+        {/* Stats */}
+        <div className="grid grid-cols-3 gap-4 mb-8">
+          {[
+            { label: "Zeit gespart", value: "15h/Woche" },
+            { label: "Fehlerrate", value: "-95%" },
+            { label: "Automatisiert", value: "100%" },
+          ].map((stat, i) => (
+            <div
+              key={i}
+              className="p-4 rounded-2xl border border-white/20 text-center"
+              style={{ backgroundColor: "rgba(255, 255, 255, 0.05)" }}
+            >
+              <div className="text-lg font-light text-violet-400 mb-1">{stat.value}</div>
+              <div className="text-xs text-white/70">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+
         {/* CTA */}
-        <div className="mt-12 text-center">
+        <div className="text-center">
           <a
             href="#kontakt"
             onClick={(e) => {

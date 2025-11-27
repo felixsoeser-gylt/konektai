@@ -35,7 +35,7 @@ const tabs = [
   },
   {
     id: "sales",
-    label: "Vertrieb & Leadgenerierung",
+    label: "Büro-Automatisierungen",
     description: "Automatisierte Prozesse zur Lead-Qualifizierung",
     component: SalesDemo,
   },
