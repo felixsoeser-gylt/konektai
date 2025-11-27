@@ -135,7 +135,7 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
 
   return (
     <div
-      className="border border-white/10 rounded-3xl p-8 md:p-12 relative overflow-hidden"
+      className="border border-white/10 rounded-3xl p-4 sm:p-6 md:p-8 lg:p-12 relative overflow-hidden"
       style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
     >
       {/* Glow effect */}
@@ -148,13 +148,13 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
 
       <div className="relative z-10 max-w-5xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h3 className="text-3xl md:text-4xl font-light text-white mb-4">
+        <div className="text-center mb-8 md:mb-12">
+          <h3 className="text-2xl sm:text-3xl md:text-4xl font-light text-white mb-3 md:mb-4">
             <span className="font-medium italic" style={{ fontFamily: "'Instrument Serif', serif" }}>
               Büro-Automatisierungen
             </span>
           </h3>
-          <p className="text-white/70 text-sm md:text-base font-light max-w-3xl mx-auto leading-relaxed">
+          <p className="text-white/70 text-xs sm:text-sm md:text-base font-light max-w-3xl mx-auto leading-relaxed px-2">
             Büro-Automatisierung bedeutet: KI übernimmt deine nervigsten Routineaufgaben.
             <br />
             Weniger Klicks, weniger Fehler, mehr Zeit für Umsatz.
@@ -164,31 +164,31 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
         </div>
 
         {/* Animation Area */}
-        <div className="min-h-[600px] relative mb-8">
+        <div className="min-h-[800px] md:min-h-[600px] relative mb-6 md:mb-8">
           {/* Email Inbox */}
-          <div className="absolute left-0 top-0 w-1/4">
-            <div className="p-4 rounded-xl border border-white/20 bg-white/5">
-              <div className="flex items-center gap-2 mb-4">
-                <Mail className="w-5 h-5 text-violet-400" />
-                <h4 className="text-white font-light text-sm">Posteingang</h4>
+          <div className="md:absolute relative md:left-0 md:top-0 md:w-1/4 w-full mb-4 md:mb-0">
+            <div className="p-3 sm:p-4 rounded-xl border border-white/20 bg-white/5">
+              <div className="flex items-center gap-2 mb-3 md:mb-4">
+                <Mail className="w-4 sm:w-5 h-4 sm:h-5 text-violet-400" />
+                <h4 className="text-white font-light text-xs sm:text-sm">Posteingang</h4>
               </div>
               <div className="space-y-2">
                 {emails.map((email) => (
                   <div
                     key={email.id}
-                    className={`p-3 rounded-lg border transition-all duration-500 ${
+                    className={`p-2 sm:p-3 rounded-lg border transition-all duration-500 ${
                       email.processed ? "border-green-500/40 bg-green-500/10 opacity-50" : "border-white/20 bg-white/10"
                     }`}
                   >
                     <div className="flex items-start gap-2">
-                      <Mail className="w-4 h-4 text-white/70 flex-shrink-0 mt-0.5" />
+                      <Mail className="w-3 sm:w-4 h-3 sm:h-4 text-white/70 flex-shrink-0 mt-0.5" />
                       <div className="min-w-0 flex-1">
                         <p className="text-xs text-white/90 font-light truncate">{email.from}</p>
-                        <p className="text-xs text-white/60 truncate">{email.subject}</p>
+                        <p className="text-[10px] sm:text-xs text-white/60 truncate">{email.subject}</p>
                       </div>
                     </div>
                     {email.processed && (
-                      <div className="mt-2 text-xs text-green-400 flex items-center gap-1">
+                      <div className="mt-2 text-[10px] sm:text-xs text-green-400 flex items-center gap-1">
                         <span>✓</span> Verarbeitet
                       </div>
                     )}
@@ -200,8 +200,8 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
 
           {/* AI Processing Indicator */}
           {currentStep >= 2 && currentStep < 4 && (
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-              <div className="px-6 py-3 rounded-full bg-violet-500/30 border border-violet-500/50 text-white text-sm font-light shadow-lg shadow-violet-500/30 animate-pulse">
+            <div className="md:absolute relative md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 my-4 md:my-0 flex justify-center">
+              <div className="px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-violet-500/30 border border-violet-500/50 text-white text-xs sm:text-sm font-light shadow-lg shadow-violet-500/30 animate-pulse">
                 <span className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-violet-400 animate-ping" />
                   KI verarbeitet...
@@ -211,28 +211,28 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
           )}
 
           {/* Invoice Folder */}
-          <div className="absolute right-0 top-0 w-1/4">
-            <div className="p-4 rounded-xl border border-white/20 bg-white/5">
-              <div className="flex items-center gap-2 mb-4">
-                <FolderOpen className="w-5 h-5 text-violet-400" />
-                <h4 className="text-white font-light text-sm">Rechnungen</h4>
+          <div className="md:absolute relative md:right-0 md:top-0 md:w-1/4 w-full mb-4 md:mb-0">
+            <div className="p-3 sm:p-4 rounded-xl border border-white/20 bg-white/5">
+              <div className="flex items-center gap-2 mb-3 md:mb-4">
+                <FolderOpen className="w-4 sm:w-5 h-4 sm:h-5 text-violet-400" />
+                <h4 className="text-white font-light text-xs sm:text-sm">Rechnungen</h4>
               </div>
               <div className="space-y-2">
                 {invoices.map((invoice) => (
                   <div
                     key={invoice.id}
-                    className={`p-3 rounded-lg border transition-all duration-500 ${
+                    className={`p-2 sm:p-3 rounded-lg border transition-all duration-500 ${
                       invoice.status === "completed"
                         ? "border-violet-500/40 bg-violet-500/10"
                         : "border-white/20 bg-white/10"
                     }`}
                   >
                     <div className="flex items-start gap-2">
-                      <FileText className="w-4 h-4 text-violet-400 flex-shrink-0 mt-0.5" />
+                      <FileText className="w-3 sm:w-4 h-3 sm:h-4 text-violet-400 flex-shrink-0 mt-0.5" />
                       <div className="min-w-0 flex-1">
                         <p className="text-xs text-white/90 font-light">{invoice.number}</p>
-                        <p className="text-xs text-violet-400">{invoice.amount}</p>
-                        <p className="text-xs text-white/60">{invoice.date}</p>
+                        <p className="text-[10px] sm:text-xs text-violet-400">{invoice.amount}</p>
+                        <p className="text-[10px] sm:text-xs text-white/60">{invoice.date}</p>
                       </div>
                     </div>
                   </div>
@@ -242,20 +242,20 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
           </div>
 
           {/* Data Table */}
-          <div className="absolute bottom-0 left-0 right-0 mt-8">
-            <div className="p-4 rounded-xl border border-white/20 bg-white/5">
-              <div className="flex items-center gap-2 mb-4">
-                <Table className="w-5 h-5 text-violet-400" />
-                <h4 className="text-white font-light text-sm">Buchhaltungs-Tabelle</h4>
+          <div className="md:absolute relative md:bottom-0 md:left-0 md:right-0 w-full mt-4 md:mt-8">
+            <div className="p-3 sm:p-4 rounded-xl border border-white/20 bg-white/5">
+              <div className="flex items-center gap-2 mb-3 md:mb-4">
+                <Table className="w-4 sm:w-5 h-4 sm:h-5 text-violet-400" />
+                <h4 className="text-white font-light text-xs sm:text-sm">Buchhaltungs-Tabelle</h4>
               </div>
-              <div className="overflow-hidden">
-                <table className="w-full text-xs">
+              <div className="overflow-x-auto">
+                <table className="w-full text-[10px] sm:text-xs">
                   <thead>
                     <tr className="border-b border-white/10">
-                      <th className="text-left text-white/70 font-light py-2 px-3">Rechnungsnr.</th>
-                      <th className="text-left text-white/70 font-light py-2 px-3">Betrag</th>
-                      <th className="text-left text-white/70 font-light py-2 px-3">Datum</th>
-                      <th className="text-left text-white/70 font-light py-2 px-3">Kategorie</th>
+                      <th className="text-left text-white/70 font-light py-2 px-2 sm:px-3">Rechnungsnr.</th>
+                      <th className="text-left text-white/70 font-light py-2 px-2 sm:px-3">Betrag</th>
+                      <th className="text-left text-white/70 font-light py-2 px-2 sm:px-3">Datum</th>
+                      <th className="text-left text-white/70 font-light py-2 px-2 sm:px-3">Kategorie</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -265,10 +265,10 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
                         className="border-b border-white/5 animate-fadeIn"
                         style={{ animationDelay: `${i * 0.2}s` }}
                       >
-                        <td className="text-white/90 font-light py-2 px-3">{entry.number}</td>
-                        <td className="text-violet-400 font-light py-2 px-3">{entry.amount}</td>
-                        <td className="text-white/70 font-light py-2 px-3">{entry.date}</td>
-                        <td className="text-white/70 font-light py-2 px-3">{entry.category}</td>
+                        <td className="text-white/90 font-light py-2 px-2 sm:px-3">{entry.number}</td>
+                        <td className="text-violet-400 font-light py-2 px-2 sm:px-3">{entry.amount}</td>
+                        <td className="text-white/70 font-light py-2 px-2 sm:px-3">{entry.date}</td>
+                        <td className="text-white/70 font-light py-2 px-2 sm:px-3">{entry.category}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -279,7 +279,7 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-3 gap-2 sm:gap-3 md:gap-4 mb-6 md:mb-8">
           {[
             { label: "Zeit gespart", value: "15h/Woche" },
             { label: "Fehlerrate", value: "-95%" },
@@ -287,11 +287,11 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
           ].map((stat, i) => (
             <div
               key={i}
-              className="p-4 rounded-2xl border border-white/20 text-center"
+              className="p-3 sm:p-4 rounded-xl sm:rounded-2xl border border-white/20 text-center"
               style={{ backgroundColor: "rgba(255, 255, 255, 0.05)" }}
             >
-              <div className="text-lg font-light text-violet-400 mb-1">{stat.value}</div>
-              <div className="text-xs text-white/70">{stat.label}</div>
+              <div className="text-sm sm:text-base md:text-lg font-light text-violet-400 mb-1">{stat.value}</div>
+              <div className="text-[10px] sm:text-xs text-white/70">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -304,7 +304,7 @@ export function SalesDemo({ isActive }: { isActive?: boolean }) {
               e.preventDefault()
               document.getElementById("kontakt")?.scrollIntoView({ behavior: "smooth" })
             }}
-            className="inline-block px-8 py-3 rounded-full bg-white text-black font-normal text-sm transition-all duration-300 hover:bg-white/90 hover:shadow-lg"
+            className="inline-block px-6 sm:px-8 py-2.5 sm:py-3 rounded-full bg-white text-black font-normal text-xs sm:text-sm transition-all duration-300 hover:bg-white/90 hover:shadow-lg"
           >
             Jetzt KI integrieren!
           </a>
