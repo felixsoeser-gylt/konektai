@@ -35,15 +35,33 @@ export default function ShaderBackground({ children }: ShaderBackgroundProps) {
     const resizeCanvas = () => {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
+      // Set canvas style to prevent scroll issues
+      canvas.style.width = `${window.innerWidth}px`
+      canvas.style.height = `${window.innerHeight}px`
       initParticles()
     }
 
     const initParticles = () => {
       particlesRef.current = []
+      const centerX = canvas.width / 2
+      const centerY = canvas.height / 2
+      const exclusionRadius = 200 // Radius to keep particles away from center logo
+
       for (let i = 0; i < PARTICLE_COUNT; i++) {
+        let x, y
+        let attempts = 0
+        const maxAttempts = 50
+
+        // Keep trying to place particle outside exclusion zone
+        do {
+          x = Math.random() * canvas.width
+          y = Math.random() * canvas.height
+          attempts++
+        } while (attempts < maxAttempts && Math.sqrt((x - centerX) ** 2 + (y - centerY) ** 2) < exclusionRadius)
+
         particlesRef.current.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
+          x,
+          y,
           speedX: (Math.random() - 0.5) * 0.4,
           speedY: (Math.random() - 0.5) * 0.4,
           size: Math.random() * 2.5 + 1,
@@ -104,6 +122,21 @@ export default function ShaderBackground({ children }: ShaderBackgroundProps) {
           particle.x += particle.speedX
           particle.y += particle.speedY
 
+          const centerX = canvas.width / 2
+          const centerY = canvas.height / 2
+          const exclusionRadius = 200
+          const distanceFromCenter = Math.sqrt((particle.x - centerX) ** 2 + (particle.y - centerY) ** 2)
+
+          // Push particle away if it enters exclusion zone
+          if (distanceFromCenter < exclusionRadius) {
+            const angle = Math.atan2(particle.y - centerY, particle.x - centerX)
+            particle.x = centerX + Math.cos(angle) * exclusionRadius
+            particle.y = centerY + Math.sin(angle) * exclusionRadius
+            // Reverse direction to move away from center
+            particle.speedX = Math.cos(angle) * 0.5
+            particle.speedY = Math.sin(angle) * 0.5
+          }
+
           if (particle.x < 0) particle.x = canvas.width
           if (particle.x > canvas.width) particle.x = 0
           if (particle.y < 0) particle.y = canvas.height
@@ -131,9 +164,13 @@ export default function ShaderBackground({ children }: ShaderBackgroundProps) {
 
   return (
     <div className="min-h-screen bg-black relative overflow-hidden">
-      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full opacity-90" />
+      <canvas
+        ref={canvasRef}
+        className="fixed top-0 left-0 w-full h-full opacity-90 pointer-events-none"
+        style={{ zIndex: 0 }}
+      />
 
-      <div className="absolute inset-0 w-full h-full opacity-60 pointer-events-none">
+      <div className="fixed top-0 left-0 w-full h-full opacity-60 pointer-events-none" style={{ zIndex: 1 }}>
         <div
           className="absolute inset-0 blur-3xl"
           style={{
@@ -146,7 +183,9 @@ export default function ShaderBackground({ children }: ShaderBackgroundProps) {
         />
       </div>
 
-      {children}
+      <div className="relative" style={{ zIndex: 10 }}>
+        {children}
+      </div>
     </div>
   )
 }
