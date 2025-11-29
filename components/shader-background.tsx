@@ -32,10 +32,14 @@ export default function ShaderBackground({ children }: ShaderBackgroundProps) {
     const PARTICLE_COUNT = 80
     const CONNECTION_DISTANCE = 150
 
-    const width = window.innerWidth
-    const height = window.innerHeight
-    canvas.width = width
-    canvas.height = height
+    const setCanvasSize = () => {
+      const width = window.innerWidth
+      const height = window.innerHeight
+      canvas.width = width
+      canvas.height = height
+    }
+
+    setCanvasSize()
 
     const initParticles = () => {
       particlesRef.current = []
@@ -144,39 +148,41 @@ export default function ShaderBackground({ children }: ShaderBackgroundProps) {
 
     animationFrameRef.current = requestAnimationFrame(animate)
 
+    const handleResize = () => {
+      setCanvasSize()
+      initParticles()
+    }
+
+    window.addEventListener("resize", handleResize)
+
     return () => {
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current)
       }
+      window.removeEventListener("resize", handleResize)
     }
-  }, []) // Empty dependency array so effect only runs once
+  }, [])
 
   return (
     <div className="min-h-screen bg-black relative overflow-x-hidden">
       <canvas
         ref={canvasRef}
-        className="pointer-events-none"
+        className="pointer-events-none fixed top-0 left-0 w-screen h-screen"
         style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100vw",
-          height: "100vh",
           zIndex: 0,
           opacity: 0.9,
+          transform: "translateZ(0)",
+          willChange: "transform",
         }}
       />
 
       <div
-        className="pointer-events-none"
+        className="pointer-events-none fixed top-0 left-0 w-screen h-screen"
         style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100vw",
-          height: "100vh",
           zIndex: 1,
           opacity: 0.6,
+          transform: "translateZ(0)",
+          willChange: "transform",
         }}
       >
         <div
