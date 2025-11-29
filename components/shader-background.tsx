@@ -21,7 +21,6 @@ export default function ShaderBackground({ children }: ShaderBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const particlesRef = useRef<Particle[]>([])
   const animationFrameRef = useRef<number>()
-  const viewportOffsetRef = useRef({ x: 0, y: 0 })
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -33,13 +32,10 @@ export default function ShaderBackground({ children }: ShaderBackgroundProps) {
     const PARTICLE_COUNT = 80
     const CONNECTION_DISTANCE = 150
 
-    const resizeCanvas = () => {
-      const width = window.innerWidth
-      const height = window.innerHeight
-      canvas.width = width
-      canvas.height = height
-      initParticles()
-    }
+    const width = window.innerWidth
+    const height = window.innerHeight
+    canvas.width = width
+    canvas.height = height
 
     const initParticles = () => {
       particlesRef.current = []
@@ -70,16 +66,7 @@ export default function ShaderBackground({ children }: ShaderBackgroundProps) {
       }
     }
 
-    const handleScroll = () => {
-      viewportOffsetRef.current = {
-        x: window.scrollX || window.pageXOffset,
-        y: window.scrollY || window.pageYOffset,
-      }
-    }
-
-    resizeCanvas()
-    window.addEventListener("resize", resizeCanvas)
-    window.addEventListener("scroll", handleScroll, { passive: true })
+    initParticles()
 
     let lastTime = 0
     const targetFPS = 60
@@ -95,9 +82,9 @@ export default function ShaderBackground({ children }: ShaderBackgroundProps) {
         ctx.fillRect(0, 0, canvas.width, canvas.height)
 
         const particles = particlesRef.current
+
         ctx.shadowBlur = 0
 
-        // Draw connections
         for (let i = 0; i < particles.length; i++) {
           const particle = particles[i]
 
@@ -121,7 +108,6 @@ export default function ShaderBackground({ children }: ShaderBackgroundProps) {
           }
         }
 
-        // Update and draw particles
         for (let i = 0; i < particles.length; i++) {
           const particle = particles[i]
 
@@ -159,42 +145,50 @@ export default function ShaderBackground({ children }: ShaderBackgroundProps) {
     animationFrameRef.current = requestAnimationFrame(animate)
 
     return () => {
-      window.removeEventListener("resize", resizeCanvas)
-      window.removeEventListener("scroll", handleScroll)
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current)
       }
     }
-  }, [])
+  }, []) // Empty dependency array so effect only runs once
 
   return (
-    <div className="min-h-screen bg-black relative">
+    <div className="min-h-screen bg-black relative overflow-x-hidden">
+      <canvas
+        ref={canvasRef}
+        className="pointer-events-none"
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          zIndex: 0,
+          opacity: 0.9,
+        }}
+      />
+
       <div
-        className="absolute top-0 left-0 w-full h-screen pointer-events-none"
-        style={{ position: "sticky", top: 0, zIndex: 0 }}
+        className="pointer-events-none"
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100vw",
+          height: "100vh",
+          zIndex: 1,
+          opacity: 0.6,
+        }}
       >
-        <canvas
-          ref={canvasRef}
-          className="w-full h-full opacity-90"
+        <div
+          className="absolute inset-0 blur-3xl"
           style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
+            background: `
+              radial-gradient(ellipse 80% 50% at 20% 40%, rgba(139, 92, 246, 0.5), transparent),
+              radial-gradient(ellipse 60% 50% at 80% 60%, rgba(109, 40, 217, 0.4), transparent),
+              radial-gradient(ellipse 50% 40% at 50% 50%, rgba(167, 139, 250, 0.3), transparent)
+            `,
           }}
         />
-
-        <div className="absolute top-0 left-0 w-full h-full opacity-60" style={{ zIndex: 1 }}>
-          <div
-            className="absolute inset-0 blur-3xl"
-            style={{
-              background: `
-                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(139, 92, 246, 0.5), transparent),
-                radial-gradient(ellipse 60% 50% at 80% 60%, rgba(109, 40, 217, 0.4), transparent),
-                radial-gradient(ellipse 50% 40% at 50% 50%, rgba(167, 139, 250, 0.3), transparent)
-              `,
-            }}
-          />
-        </div>
       </div>
 
       <div className="relative" style={{ zIndex: 10 }}>
