@@ -42,9 +42,14 @@ export default function AnimatedLogoBackground() {
       className="pointer-events-none fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
       style={{
         animation: "floatLogo 10s ease-in-out infinite",
-        willChange: "transform",
+        willChange: "transform, opacity",
         opacity: scrollOpacity,
         transition: "opacity 0.1s ease-out",
+        transform: "translate(-50%, -50%) translateZ(0)",
+        backfaceVisibility: "hidden",
+        WebkitBackfaceVisibility: "hidden",
+        perspective: 1000,
+        WebkitPerspective: 1000,
       }}
     >
       <img
@@ -55,6 +60,8 @@ export default function AnimatedLogoBackground() {
           maxWidth: "360px",
           opacity: 0.25,
           transform: "translateZ(0)",
+          backfaceVisibility: "hidden",
+          WebkitBackfaceVisibility: "hidden",
           filter: "none",
         }}
       />
