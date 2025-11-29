@@ -33,11 +33,12 @@ export default function ShaderBackground({ children }: ShaderBackgroundProps) {
     const CONNECTION_DISTANCE = 150
 
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-      // Set canvas style to prevent scroll issues
-      canvas.style.width = `${window.innerWidth}px`
-      canvas.style.height = `${window.innerHeight}px`
+      const width = window.innerWidth
+      const height = window.innerHeight
+      canvas.width = width
+      canvas.height = height
+      canvas.style.width = `${width}px`
+      canvas.style.height = `${height}px`
       initParticles()
     }
 
@@ -163,14 +164,30 @@ export default function ShaderBackground({ children }: ShaderBackgroundProps) {
   }, [])
 
   return (
-    <div className="min-h-screen bg-black relative overflow-hidden">
+    <div className="min-h-screen bg-black relative overflow-x-hidden">
       <canvas
         ref={canvasRef}
         className="fixed top-0 left-0 w-full h-full opacity-90 pointer-events-none"
-        style={{ zIndex: 0 }}
+        style={{
+          zIndex: 0,
+          transform: "translate3d(0, 0, 0)",
+          WebkitTransform: "translate3d(0, 0, 0)",
+          backfaceVisibility: "hidden",
+          WebkitBackfaceVisibility: "hidden",
+          willChange: "transform",
+        }}
       />
 
-      <div className="fixed top-0 left-0 w-full h-full opacity-60 pointer-events-none" style={{ zIndex: 1 }}>
+      <div
+        className="fixed top-0 left-0 w-full h-full opacity-60 pointer-events-none"
+        style={{
+          zIndex: 1,
+          transform: "translate3d(0, 0, 0)",
+          WebkitTransform: "translate3d(0, 0, 0)",
+          backfaceVisibility: "hidden",
+          WebkitBackfaceVisibility: "hidden",
+        }}
+      >
         <div
           className="absolute inset-0 blur-3xl"
           style={{
