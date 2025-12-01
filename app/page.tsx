@@ -24,7 +24,6 @@ export default function ShaderShowcase() {
       </ShaderBackground>
       <div className="relative bg-black">
         {/* Subtle shader continuation effect */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-violet-950/10 to-black pointer-events-none" />
         <ServicesSection />
         <div id="kontakt">
           <ContactForm />

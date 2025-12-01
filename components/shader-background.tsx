@@ -172,20 +172,21 @@ export default function ShaderBackground({ children }: ShaderBackgroundProps) {
         style={{
           position: "fixed",
           top: 0,
-          left: 0,
-          width: "100vw",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "100%",
+          maxWidth: "1400px",
           height: "100vh",
           zIndex: 1,
-          opacity: 0.6,
+          opacity: 0.4,
         }}
       >
         <div
           className="absolute inset-0 blur-3xl"
           style={{
             background: `
-              radial-gradient(ellipse 80% 50% at 20% 40%, rgba(139, 92, 246, 0.5), transparent),
-              radial-gradient(ellipse 60% 50% at 80% 60%, rgba(109, 40, 217, 0.4), transparent),
-              radial-gradient(ellipse 50% 40% at 50% 50%, rgba(167, 139, 250, 0.3), transparent)
+              radial-gradient(ellipse 60% 40% at 50% 40%, rgba(139, 92, 246, 0.3), transparent),
+              radial-gradient(ellipse 40% 30% at 50% 60%, rgba(109, 40, 217, 0.2), transparent)
             `,
           }}
         />
